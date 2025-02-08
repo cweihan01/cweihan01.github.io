@@ -4,6 +4,7 @@
 import Experience from './components/Experience.vue';
 import Projects from '@/components/Projects.vue';
 import Skills from './components/Skills.vue';
+import Footer from './components/Footer.vue';
 </script>
 
 <template>
@@ -20,15 +21,20 @@ import Skills from './components/Skills.vue';
   </main> -->
 
   <main>
-    <Experience />
-    <Projects />
-    <Skills />
+    <div class="body">
+      <Experience />
+      <Projects />
+      <Skills />
+    </div>
+    <Footer />
   </main>
 </template>
 
 <style scoped>
-
-
+.body {
+  width: 80%;
+  margin: auto;
+}
 
 
 </style>
