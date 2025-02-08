@@ -1,6 +1,7 @@
 <script setup>
 // import HelloWorld from './components/HelloWorld.vue'
 // import TheWelcome from './components/TheWelcome.vue'
+import Home from './components/Home.vue';
 import Experience from './components/Experience.vue';
 import Projects from '@/components/Projects.vue';
 import Skills from './components/Skills.vue';
@@ -21,9 +22,10 @@ import Footer from './components/Footer.vue';
   </main> -->
 
   <main>
+    <Home />
     <div class="body">
       <Experience />
-      <Projects />
+      <!-- <Projects /> -->
       <Skills />
     </div>
     <Footer />
