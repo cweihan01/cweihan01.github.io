@@ -42,16 +42,16 @@ export default {
                         },
                     ], // Empty links array initially
                 },
-                {
-                    name: 'website', // Another custom project (name)
-                    image: remembrallImage, // Local image (replace with your actual image path)
-                    links: [
-                        {
-                            text: 'Devpost',
-                            url: 'https://devpost.com/software/pill-ai',
-                        },
-                    ], // Empty links array initially
-                },
+                // {
+                //     name: 'website', // Another custom project (name)
+                //     image: remembrallImage, // Local image (replace with your actual image path)
+                //     links: [
+                //         {
+                //             text: 'Devpost',
+                //             url: 'https://devpost.com/software/pill-ai',
+                //         },
+                //     ], // Empty links array initially
+                // },
             ];
 
             const mockGithubData = {
@@ -79,35 +79,35 @@ export default {
             };
 
             // Fetch additional data for each project from GitHub API
-            // const projectsWithGithubData = await Promise.all(
-            //     customProjects.map(async (project) => {
-            //         const githubRepo = await axios.get(
-            //             `https://api.github.com/repos/cweihan01/${project.name}`
-            //         );
-            //         const updatedProject = {
-            //             ...project, // Keep original custom project data
-            //             description: githubRepo.data.description || 'No description available.',
-            //             stargazers_count: githubRepo.data.stargazers_count,
-            //             pushed_at: githubRepo.data.pushed_at,
-            //             languagesUrl: githubRepo.data.languages_url,
-            //             repoLink: githubRepo.data.html_url,
-            //         };
-            //         return updatedProject;
-            //     })
-            // );
+            const projectsWithGithubData = await Promise.all(
+                customProjects.map(async (project) => {
+                    const githubRepo = await axios.get(
+                        `https://api.github.com/repos/cweihan01/${project.name}`
+                    );
+                    const updatedProject = {
+                        ...project, // Keep original custom project data
+                        description: githubRepo.data.description || 'No description available.',
+                        stargazers_count: githubRepo.data.stargazers_count,
+                        pushed_at: githubRepo.data.pushed_at,
+                        languagesUrl: githubRepo.data.languages_url,
+                        repoLink: githubRepo.data.html_url,
+                    };
+                    return updatedProject;
+                })
+            );
 
-            const projectsWithGithubData = customProjects.map((project) => {
-                const githubRepo = mockGithubData[project.name];
-                const updatedProject = {
-                    ...project, // Keep original custom project data
-                    description: githubRepo.description || 'No description available.',
-                    stargazers_count: githubRepo.stargazers_count,
-                    pushed_at: githubRepo.pushed_at,
-                    languagesUrl: githubRepo.languages_url,
-                    repoLink: githubRepo.html_url,
-                };
-                return updatedProject;
-            });
+            // const projectsWithGithubData = customProjects.map((project) => {
+            //     const githubRepo = mockGithubData[project.name];
+            //     const updatedProject = {
+            //         ...project, // Keep original custom project data
+            //         description: githubRepo.description || 'No description available.',
+            //         stargazers_count: githubRepo.stargazers_count,
+            //         pushed_at: githubRepo.pushed_at,
+            //         languagesUrl: githubRepo.languages_url,
+            //         repoLink: githubRepo.html_url,
+            //     };
+            //     return updatedProject;
+            // });
 
             console.log(projectsWithGithubData);
             this.projects = projectsWithGithubData;
