@@ -14,7 +14,7 @@
             </div>
 
             <a :href="value.repoLink" target="_blank" class="btn repo-btn">
-                <fa-icon icon="fa-brands fa-github" size="lg" class="icon" /> Repo
+                <fa-icon icon="fab fa-github" size="lg" class="icon" /> Repo
             </a>
         </div>
 
@@ -118,6 +118,7 @@ export default {
     border-radius: 15px;
     box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
     text-align: left;
+    align-self: start;
     width: 100%;
     max-width: 400px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;

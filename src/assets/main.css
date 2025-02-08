@@ -28,13 +28,9 @@ a,
   }
 
   #app {
-    width: 90vw;
+    width: 80vw;
     /* display: grid;
     grid-template-columns: 1fr 1fr;
     padding: 0 2rem; */
   }
-}
-
-fa-icon {
-  margin-right: 100px;
 }

@@ -3,6 +3,7 @@
 // import TheWelcome from './components/TheWelcome.vue'
 import Experience from './components/Experience.vue';
 import Projects from '@/components/Projects.vue';
+import Skills from './components/Skills.vue';
 </script>
 
 <template>
@@ -21,6 +22,7 @@ import Projects from '@/components/Projects.vue';
   <main>
     <Experience />
     <Projects />
+    <Skills />
   </main>
 </template>
 
