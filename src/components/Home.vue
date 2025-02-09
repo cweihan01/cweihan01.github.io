@@ -1,16 +1,16 @@
 <template>
     <div class="home-page">
         <div class="intro-section">
-            <h1 class="name">Your Name</h1>
-            <p class="study-info">Computer Engineering @ UCLA</p>
+            <h1 class="name">{{ aboutInfo.firstName + ' ' + aboutInfo.lastName }}</h1>
+            <p class="headline">{{ aboutInfo.headline }}</p>
             <div class="icons-container">
-                <a :href="links.github" target="_blank" aria-label="GitHub">
-                    <fa-icon icon="fab fa-github" size="2x" class="social-icons" />
-                </a>
-                <a :href="links.linkedin" target="_blank" aria-label="LinkedIn">
+                <a :href="aboutInfo.linkedin" target="_blank" aria-label="LinkedIn">
                     <fa-icon icon="fab fa-linkedin" size="2x" class="social-icons" />
                 </a>
-                <a :href="links.email" target="_blank" aria-label="Email">
+                <a :href="aboutInfo.github" target="_blank" aria-label="GitHub">
+                    <fa-icon icon="fab fa-github" size="2x" class="social-icons" />
+                </a>
+                <a :href="aboutInfo.email" target="_blank" aria-label="Email">
                     <fa-icon icon="fas fa-envelope" size="2x" class="social-icons" />
                 </a>
             </div>
@@ -22,14 +22,11 @@
 </template>
 
 <script>
+import aboutInfo from '@/assets/data/about.json';
 export default {
     data() {
         return {
-            links: {
-                github: 'https://github.com/yourusername',
-                linkedin: 'https://linkedin.com/in/yourprofile',
-                email: 'mailto:your.email@example.com',
-            },
+            aboutInfo,
         };
     },
     methods: {
@@ -65,7 +62,7 @@ export default {
     margin-bottom: 10px;
 }
 
-.study-info {
+.headline {
     font-size: 1.5em;
     color: #555;
     margin-bottom: 20px;

@@ -26,7 +26,7 @@ export default {
             <p class="footer-text">
                 Made with
                 <fa-icon icon="fas fa-mug-hot" style="color: #967259" />
-                by {{ aboutInfo.author }} using
+                by {{ aboutInfo.firstName }} using
                 <a href="https://vuejs.org/" target="_blank" style="color: #42b883">
                     <fa-icon icon="fab fa-vuejs" />
                 </a>
