@@ -1,5 +1,4 @@
-# This is a basic workflow to help you get started with Actions
-name: Deploy static website to GitHub Pages
+name: Deploy personal website to GitHub Pages
 
 # Controls when the workflow will run
 on:
@@ -54,7 +53,6 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Upload dist folder
           path: './dist'
 
       - name: Deploy to GitHub Pages
