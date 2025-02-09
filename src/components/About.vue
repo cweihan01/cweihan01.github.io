@@ -1,16 +1,11 @@
 <template>
     <SectionWrapper bgColor="#f3f4f6">
         <div class="about-section">
-            <img :src="portrait" alt="Portrait" class="portrait" />
+            <img :src="aboutInfo.portrait" alt="Portrait" class="portrait" />
             <div class="about-content">
                 <h2 class="about-title">About Me</h2>
                 <p class="about-paragraph">
-                    Hi! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Temporibus nam
-                    laboriosam odit facilis quis impedit commodi, excepturi earum ab? Iure modi
-                    harum cupiditate consequatur nesciunt sequi possimus, qui aspernatur odio! Lorem
-                    ipsum dolor sit amet consectetur adipisicing elit. Iusto temporibus voluptatem
-                    quaerat, id nam at excepturi ab labore. Nobis, nostrum enim. Unde est rem modi
-                    qui. Magni ducimus odio reprehenderit.
+                    {{ aboutInfo.description }}
                 </p>
             </div>
         </div>
@@ -18,8 +13,21 @@
 </template>
 
 <script>
+// import aboutData from '@/assets/data.json'; // Future JSON import
 import SectionWrapper from './SectionWrapper.vue';
-import selfPortrait from '@/assets/github-mark.png';
+
+const aboutInfo = {
+    portrait: '../assets/github-mark.png',
+    description: `Hi! I'm a Computer Engineering student at UCLA passionate about software development and technology. I enjoy building products that bridge the gap between business and technology. In my free time, you'll often find me exploring new technologies or working on community-driven projects.`,
+};
+
+function resolveImagePaths(info) {
+    const updatedInfo = { ...info };
+    if (info.portrait) {
+        updatedInfo.portrait = new URL(info.portrait, import.meta.url).href;
+    }
+    return updatedInfo;
+}
 
 export default {
     components: {
@@ -27,7 +35,7 @@ export default {
     },
     data() {
         return {
-            portrait: selfPortrait,
+            aboutInfo: resolveImagePaths(aboutInfo),
         };
     },
 };
@@ -41,7 +49,6 @@ export default {
     justify-content: center;
     gap: 20px;
     padding: 40px 20px;
-    /* min-height: 60vh; */
 }
 
 .portrait {
@@ -74,7 +81,6 @@ export default {
     .about-section {
         flex-direction: column;
         text-align: center;
-        min-height: auto;
     }
 
     .portrait {
