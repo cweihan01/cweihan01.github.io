@@ -17,17 +17,9 @@
 import SectionWrapper from './SectionWrapper.vue';
 
 const aboutInfo = {
-    portrait: '../assets/github-mark.png',
+    portrait: 'github-mark.png',
     description: `Hi! I'm a Computer Engineering student at UCLA passionate about software development and technology. I enjoy building products that bridge the gap between business and technology. In my free time, you'll often find me exploring new technologies or working on community-driven projects.`,
 };
-
-function resolveImagePaths(info) {
-    const updatedInfo = { ...info };
-    if (info.portrait) {
-        updatedInfo.portrait = new URL(info.portrait, import.meta.url).href;
-    }
-    return updatedInfo;
-}
 
 export default {
     components: {
@@ -35,7 +27,7 @@ export default {
     },
     data() {
         return {
-            aboutInfo: resolveImagePaths(aboutInfo),
+            aboutInfo,
         };
     },
 };

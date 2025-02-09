@@ -11,7 +11,7 @@
 <script>
 import axios from 'axios';
 import ProjectCard from './ProjectCard.vue';
-import remembrallImage from '@/assets/remembrall.png'; // Correct path to the image
+// import remembrallImage from '@/assets/remembrall.png';
 import SectionWrapper from './SectionWrapper.vue';
 
 export default {
@@ -29,12 +29,12 @@ export default {
             const customProjects = [
                 {
                     name: 'remembrall', // Custom project (name)
-                    image: remembrallImage, // Local image (replace with your actual image path)
+                    image: 'remembrall.png', // Local image (replace with your actual image path)
                     links: [], // Empty links array initially
                 },
                 {
                     name: 'pillpro', // Another custom project (name)
-                    image: remembrallImage, // Local image (replace with your actual image path)
+                    image: 'remembrall.png', // Local image (replace with your actual image path)
                     links: [
                         {
                             text: 'Devpost',
