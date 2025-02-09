@@ -1,19 +1,23 @@
 <template>
-    <div class="projects">
-        <div class="grid">
-            <ProjectCard v-for="(project, index) in projects" :key="index" :value="project" />
+    <SectionWrapper title="Projects" bgColor="#f2f2f2">
+        <div class="projects">
+            <div class="grid">
+                <ProjectCard v-for="(project, index) in projects" :key="index" :value="project" />
+            </div>
         </div>
-    </div>
+    </SectionWrapper>
 </template>
 
 <script>
 import axios from 'axios';
 import ProjectCard from './ProjectCard.vue';
 import remembrallImage from '@/assets/remembrall.png'; // Correct path to the image
+import SectionWrapper from './SectionWrapper.vue';
 
 export default {
     components: {
         ProjectCard,
+        SectionWrapper,
     },
     data() {
         return {

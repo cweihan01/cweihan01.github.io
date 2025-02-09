@@ -1,4 +1,5 @@
 <script>
+import SectionWrapper from './SectionWrapper.vue';
 
 export default {
     data() {
@@ -28,37 +29,42 @@ export default {
             return this.skills.filter((skill) => skill.category === this.selectedCategory);
         },
     },
+    components: {
+        SectionWrapper,
+    },
 };
 </script>
 
 <template>
-    <div class="skills-container">
-        <div class="nav-bar">
-            <div
-                v-for="category in categories"
-                :key="category.name"
-                class="nav-item"
-                :class="{ active: selectedCategory === category.name }"
-                @click="selectedCategory = category.name"
-            >
-                <fa-icon :icon="category.icon" size="2xl" class="category-icon" />
-                <span>{{ category.label }}</span>
+    <SectionWrapper title="Skills">
+        <div class="skills-container">
+            <div class="nav-bar">
+                <div
+                    v-for="category in categories"
+                    :key="category.name"
+                    class="nav-item"
+                    :class="{ active: selectedCategory === category.name }"
+                    @click="selectedCategory = category.name"
+                >
+                    <fa-icon :icon="category.icon" size="2xl" class="category-icon" />
+                    <span>{{ category.label }}</span>
+                </div>
             </div>
-        </div>
 
-        <div class="skills-list">
-            <div v-for="skill in filteredSkills" :key="skill.name" class="skill-item">
-                <div class="skill-info">
-                    <fa-icon :icon="skill.icon" size="2x" class="skill-icon" />
-                    <span class="skill-name">{{ skill.name }}</span>
+            <div class="skills-list">
+                <div v-for="skill in filteredSkills" :key="skill.name" class="skill-item">
+                    <div class="skill-info">
+                        <fa-icon :icon="skill.icon" size="2x" class="skill-icon" />
+                        <span class="skill-name">{{ skill.name }}</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress" :style="{ width: skill.proficiency + '%' }"></div>
+                    </div>
+                    <span class="percentage">{{ skill.proficiency }}%</span>
                 </div>
-                <div class="progress-bar">
-                    <div class="progress" :style="{ width: skill.proficiency + '%' }"></div>
-                </div>
-                <span class="percentage">{{ skill.proficiency }}%</span>
             </div>
         </div>
-    </div>
+    </SectionWrapper>
 </template>
 
 <style scoped>
@@ -86,7 +92,6 @@ export default {
     padding: 15px 20px;
     border-radius: 15px 0 0 15px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    
 }
 
 .nav-item {
@@ -98,7 +103,6 @@ export default {
     cursor: pointer;
     border-radius: 5px;
     transition: background 0.3s ease;
-    
 }
 
 @media (max-width: 768px) {
@@ -107,7 +111,7 @@ export default {
         border-radius: 15px;
         flex-direction: row;
     }
-    
+
     .nav-item {
         flex: 1;
     }

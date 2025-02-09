@@ -18,7 +18,7 @@ export default {
 <template>
     <footer class="footer">
         <div class="contact-section">
-            <h1 class="contact-title">Contact Me!</h1>
+            <h2 class="contact-title">Contact Me!</h2>
             <p class="contact-subtitle">
                 {{ description.subtitle }}
             </p>

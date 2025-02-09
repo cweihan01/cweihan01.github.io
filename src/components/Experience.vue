@@ -1,4 +1,6 @@
 <script>
+import SectionWrapper from './SectionWrapper.vue';
+
 export default {
     data() {
         return {
@@ -45,24 +47,29 @@ export default {
             ],
         };
     },
+    components: {
+        SectionWrapper,
+    },
 };
 </script>
 
 <template>
-    <div class="timeline">
-        <div class="entry" v-for="experience in experiences" :key="experience.id">
-            <div class="title">
-                <h3>{{ experience.years }}</h3>
-                <p>{{ experience.title }}, {{ experience.company }}</p>
-            </div>
-            <div class="body">
-                <p>{{ experience.description }}</p>
-                <ul>
-                    <li v-for="point in experience.points" :key="point">{{ point }}</li>
-                </ul>
+    <SectionWrapper title="Experience">
+        <div class="timeline">
+            <div class="entry" v-for="experience in experiences" :key="experience.id">
+                <div class="title">
+                    <h3>{{ experience.years }}</h3>
+                    <p>{{ experience.title }}, {{ experience.company }}</p>
+                </div>
+                <div class="body">
+                    <p>{{ experience.description }}</p>
+                    <ul>
+                        <li v-for="point in experience.points" :key="point">{{ point }}</li>
+                    </ul>
+                </div>
             </div>
         </div>
-    </div>
+    </SectionWrapper>
 </template>
 
 <style scoped>

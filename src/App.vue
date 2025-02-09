@@ -23,20 +23,13 @@ import Footer from './components/Footer.vue';
 
   <main>
     <Home />
-    <div class="body">
-      <Experience />
-      <!-- <Projects /> -->
-      <Skills />
-    </div>
+    <Experience />
+    <Projects />
+    <Skills />
     <Footer />
   </main>
 </template>
 
 <style scoped>
-.body {
-  width: 80%;
-  margin: auto;
-}
-
 
 </style>
