@@ -27,7 +27,7 @@ export default {
 </script>
 
 <template>
-    <SectionWrapper title="Skills">
+    <SectionWrapper sectionId="skills" title="Skills">
         <div class="skills-container">
             <div class="nav-bar">
                 <div

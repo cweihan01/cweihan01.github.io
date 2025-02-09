@@ -15,7 +15,7 @@ export default {
 </script>
 
 <template>
-    <SectionWrapper title="Experience">
+    <SectionWrapper sectionId="experience" title="Experience">
         <div class="timeline">
             <div class="entry" v-for="experience in experiences" :key="experience.id">
                 <div class="title">

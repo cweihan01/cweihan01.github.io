@@ -11,7 +11,7 @@ export default {
 </script>
 
 <template>
-    <footer class="footer">
+    <footer id="footer" class="footer">
         <div class="contact-section">
             <h2 class="contact-title">Contact Me!</h2>
             <p class="contact-subtitle">

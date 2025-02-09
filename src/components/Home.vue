@@ -31,8 +31,7 @@ export default {
     },
     methods: {
         scrollToBody() {
-            const bodySection = document.getElementById('body-section');
-            bodySection.scrollIntoView({ behavior: 'smooth' });
+            document.getElementById('about').scrollIntoView({ behavior: 'smooth' });
         },
     },
 };

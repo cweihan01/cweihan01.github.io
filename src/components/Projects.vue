@@ -1,5 +1,5 @@
 <template>
-    <SectionWrapper title="Projects" bgColor="#f2f2f2">
+    <SectionWrapper sectionId="experience" title="Projects" bgColor="#f2f2f2">
         <div class="projects">
             <div class="grid">
                 <ProjectCard v-for="(project, index) in projects" :key="index" :project="project" />

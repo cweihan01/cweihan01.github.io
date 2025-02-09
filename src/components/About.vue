@@ -1,5 +1,5 @@
 <template>
-    <SectionWrapper bgColor="#f3f4f6">
+    <SectionWrapper sectionId="about" bgColor="#f3f4f6">
         <div class="about-section">
             <img :src="aboutInfo.portrait" alt="Portrait" class="portrait" />
             <div class="about-content">
@@ -35,7 +35,7 @@ export default {
     align-items: center;
     justify-content: center;
     gap: 20px;
-    padding: 40px 20px;
+    padding-bottom: 20px;
 }
 
 .portrait {

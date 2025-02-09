@@ -13,6 +13,10 @@ export default {
             type: Boolean,
             default: true,
         },
+        sectionId: {
+            type: String,
+            required: true,
+        },
     },
     data() {
         return {
@@ -40,7 +44,7 @@ export default {
 </script>
 
 <template>
-    <div class="section-wrapper" :style="{ backgroundColor: bgColor }">
+    <div class="section-wrapper" :id="sectionId" :style="{ backgroundColor: bgColor }">
         <div class="section-content" :style="{ width: contentWidth }">
             <h2 class="section-title">{{ title }}</h2>
             <slot></slot>
