@@ -1,32 +1,23 @@
 <script>
 import SectionWrapper from './SectionWrapper.vue';
+import skills from '@/assets/data/skills.json';
 
 export default {
     data() {
         return {
             selectedCategory: 'all',
-            categories: [
-                { name: 'all', label: 'All', icon: 'fas fa-globe' },
-                { name: 'frontend', label: 'Frontend', icon: 'fas fa-code' },
-                { name: 'backend', label: 'Backend', icon: 'fas fa-database' },
-            ],
-            skills: [
-                { name: 'JavaScript', icon: 'fab fa-js', category: 'frontend', proficiency: 90 },
-                { name: 'HTML5', icon: 'fab fa-html5', category: 'frontend', proficiency: 85 },
-                { name: 'CSS3', icon: 'fab fa-css3', category: 'frontend', proficiency: 80 },
-                { name: 'Vue.js', icon: 'fab fa-vuejs', category: 'frontend', proficiency: 75 },
-                { name: 'Node.js', icon: 'fab fa-node-js', category: 'backend', proficiency: 70 },
-                { name: 'Python', icon: 'fab fa-python', category: 'backend', proficiency: 85 },
-                { name: 'SQL', icon: 'fas fa-database', category: 'backend', proficiency: 80 },
-                { name: 'Git', icon: 'fab fa-git', category: 'general', proficiency: 85 },
-                { name: 'Docker', icon: 'fab fa-docker', category: 'general', proficiency: 70 },
-            ],
+            ...skills,
         };
     },
     computed: {
+        /** Filters skills by `selectedCategory`, and sorts in descending order of proficiency. */
         filteredSkills() {
-            if (this.selectedCategory === 'all') return this.skills;
-            return this.skills.filter((skill) => skill.category === this.selectedCategory);
+            let skillsList =
+                this.selectedCategory === 'all'
+                    ? this.skills
+                    : this.skills.filter((skill) => skill.category === this.selectedCategory);
+
+            return skillsList.sort((a, b) => b.proficiency - a.proficiency);
         },
     },
     components: {
@@ -75,17 +66,16 @@ export default {
     width: 100%;
     gap: 20px;
     /* padding: 20px; */
-    border: 1px solid #e3e3e3; /* Adds a border around the container */
+    border: 1px solid #e3e3e3;
     border-radius: 15px;
-    background: #fefcfc; /* Light background to distinguish it */
-    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.05); /* Soft shadow for emphasis */
+    background: #fefcfc;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.05);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .nav-bar {
     display: flex;
     flex-direction: column;
-    /* flex-wrap: wrap; */
     width: 20%;
     gap: 10px;
     background: #f4f4f4;

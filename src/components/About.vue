@@ -13,22 +13,17 @@
 </template>
 
 <script>
-// import aboutData from '@/assets/data.json'; // Future JSON import
 import SectionWrapper from './SectionWrapper.vue';
-
-const aboutInfo = {
-    portrait: 'github-mark.png',
-    description: `Hi! I'm a Computer Engineering student at UCLA passionate about software development and technology. I enjoy building products that bridge the gap between business and technology. In my free time, you'll often find me exploring new technologies or working on community-driven projects.`,
-};
+import aboutInfo from '@/assets/data/about.json';
 
 export default {
-    components: {
-        SectionWrapper,
-    },
     data() {
         return {
             aboutInfo,
         };
+    },
+    components: {
+        SectionWrapper,
     },
 };
 </script>

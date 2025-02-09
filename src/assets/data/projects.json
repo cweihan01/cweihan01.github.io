@@ -1,0 +1,28 @@
+[
+    {
+        "displayName": "pill.ai",
+        "repoName": "pillpro",
+        "displayDescription": "LA Hacks 2024 - Healthcare Track winner",
+        "image": "remembrall.png",
+        "links": [
+            {
+                "text": "Devpost",
+                "url": "https://devpost.com/software/pill-ai"
+            }
+        ]
+    },
+    {
+        "displayName": "Personal Website",
+        "repoName": "cweihan01.github.io",
+        "displayDescription": "Personal site you are seeing right now!",
+        "image": "remembrall.png",
+        "links": []
+    },
+    {
+        "displayName": "remembrall",
+        "repoName": "remembrall",
+        "displayDescription": "Full stack web application",
+        "image": "remembrall.png",
+        "links": []
+    }
+]

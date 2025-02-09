@@ -1,15 +1,10 @@
 <script>
+import aboutInfo from '@/assets/data/about.json';
+
 export default {
     data() {
         return {
-            description: {
-                subtitle: 'I am currently looking for Summer 2025 internships!',
-                contact: 'chuaweihan0101@gmail.com',
-                contactLink: 'mailto:chuaweihan0101@gmail.com',
-                author: 'Wei Han',
-                sourceCode: 'https://github.com/cweihan01/',
-                lastUpdated: 'February 7, 2025',
-            },
+            aboutInfo,
         };
     },
 };
@@ -20,26 +15,26 @@ export default {
         <div class="contact-section">
             <h2 class="contact-title">Contact Me!</h2>
             <p class="contact-subtitle">
-                {{ description.subtitle }}
+                {{ aboutInfo.footnote }}
             </p>
         </div>
         <div class="footer-content">
             <p class="footer-text">
                 Contact me at
-                <a :href="description.contactLink" target="_blank">{{ description.contact }}</a>
+                <a :href="aboutInfo.contactLink" target="_blank">{{ aboutInfo.contact }}</a>
             </p>
             <p class="footer-text">
                 Made with
-                <fa-icon icon="fas fa-heart" style="color: #ff5733" />
-                by {{ description.author }} using
+                <fa-icon icon="fas fa-mug-hot" style="color: #967259" />
+                by {{ aboutInfo.author }} using
                 <a href="https://vuejs.org/" target="_blank" style="color: #42b883">
                     <fa-icon icon="fab fa-vuejs" />
                 </a>
             </p>
             <p class="footer-text">
-                <a :href="description.sourceCode" target="_blank">Source Code</a>
+                <a :href="aboutInfo.sourceCode" target="_blank">Source Code</a>
             </p>
-            <p class="footer-text">Last updated: {{ description.lastUpdated }}</p>
+            <p class="footer-text">Last updated: {{ aboutInfo.lastUpdated }}</p>
         </div>
     </footer>
 </template>

@@ -1,0 +1,19 @@
+{
+    "categories": [
+        { "name": "all", "label": "All", "icon": "fas fa-globe" },
+        { "name": "frontend", "label": "Frontend", "icon": "fas fa-code" },
+        { "name": "backend", "label": "Backend", "icon": "fas fa-database" }
+    ],
+    "skills": [
+        { "name": "JavaScript", "icon": "fab fa-js", "category": "frontend", "proficiency": 90 },
+        { "name": "Python", "icon": "fab fa-python", "category": "backend", "proficiency": 85 },
+        { "name": "HTML", "icon": "fab fa-html5", "category": "frontend", "proficiency": 85 },
+        { "name": "CSS", "icon": "fab fa-css3", "category": "frontend", "proficiency": 80 },
+        { "name": "Vue.js", "icon": "fab fa-vuejs", "category": "frontend", "proficiency": 75 },
+        { "name": "React.js", "icon": "fab fa-react", "category": "frontend", "proficiency": 75 },
+        { "name": "Node.js", "icon": "fab fa-node-js", "category": "backend", "proficiency": 70 },
+        { "name": "SQL", "icon": "fas fa-database", "category": "backend", "proficiency": 80 },
+        { "name": "Git", "icon": "fab fa-git", "category": "general", "proficiency": 85 },
+        { "name": "Docker", "icon": "fab fa-docker", "category": "general", "proficiency": 70 }
+    ]
+}

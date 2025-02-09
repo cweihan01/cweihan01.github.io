@@ -1,39 +1,28 @@
 <template>
     <div class="card">
-        <img :src="value.image" alt="Project Image" class="project-image" />
-        <h3>{{ value.name }}</h3>
-        <p class="description">{{ value.description }}</p>
+        <img :src="project.image" alt="Project Image" class="project-image" />
+        <h3>{{ project.displayName }}</h3>
+        <p class="description">
+            {{ project.displayDescription || project.repoDescription }}
+        </p>
 
-        <span class="date">{{ formatDate(value.pushed_at) }}</span>
+        <p class="date">Last updated: {{ formatDate(project.pushed_at) }}</p>
 
         <div class="links-container">
-            <div v-for="(link, index) in value.links" :key="index">
+            <a :href="project.repoLink" target="_blank" class="btn repo-btn">
+                <fa-icon icon="fab fa-github" size="lg" class="icon" /> Repo
+            </a>
+
+            <div v-for="(link, index) in project.links" :key="index">
                 <a :href="link.url" target="_blank" class="btn">
                     {{ link.text }}
                 </a>
             </div>
-
-            <a :href="value.repoLink" target="_blank" class="btn repo-btn">
-                <fa-icon icon="fab fa-github" size="lg" class="icon" /> Repo
-            </a>
         </div>
 
-        <div class="details">
-            <div class="languages" v-if="Object.keys(languages).length">
-                <div class="language-item" v-for="(percentage, lang) in languages" :key="lang">
-                    <div class="language-grid">
-                        <span class="language-name">{{ lang }}</span>
-                        <div class="progress-bar">
-                            <div class="progress" :style="{ width: percentage + '%' }"></div>
-                        </div>
-                        <span class="percentage">{{ percentage }}%</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- <div class="details">
-            <div class="languages" v-if="Object.keys(languages).length">
-                <div v-for="(percentage, lang) in languages" :key="lang" class="language-item">
+        <div class="languages" v-if="Object.keys(languages).length">
+            <div class="language-item" v-for="(percentage, lang) in languages" :key="lang">
+                <div class="language-grid">
                     <span class="language-name">{{ lang }}</span>
                     <div class="progress-bar">
                         <div class="progress" :style="{ width: percentage + '%' }"></div>
@@ -41,15 +30,7 @@
                     <span class="percentage">{{ percentage }}%</span>
                 </div>
             </div>
-        </div> -->
-
-        <!-- <div class="details">
-            <span class="languages" v-if="Object.keys(languages).length">
-                <span v-for="(percentage, lang) in languages" :key="lang" class="lang">
-                    {{ lang }}: {{ percentage }}%
-                </span>
-            </span>
-        </div> -->
+        </div>
     </div>
 </template>
 
@@ -57,7 +38,7 @@
 import axios from 'axios';
 
 export default {
-    props: ['value'],
+    props: ['project'],
     data() {
         return {
             languages: {},
@@ -65,28 +46,9 @@ export default {
     },
     async created() {
         try {
-            const mockLanguagesData = {
-                remembrall: {
-                    JavaScript: 1500,
-                    HTML: 800,
-                    CSS: 700,
-                },
-                pillpro: {
-                    Python: 1200,
-                    JavaScript: 500,
-                    HTML: 300,
-                },
-                website: {
-                    Python: 1200,
-                    JavaScript: 500,
-                    HTML: 300,
-                },
-            };
-
-            if (this.value.languagesUrl) {
-                // console.log("Retrieving languages:" + this.value.languagesUrl);
-                const response = await axios.get(this.value.languagesUrl);
-                // const response = { data: mockLanguagesData[this.value.name] };
+            if (this.project.languagesUrl) {
+                // console.log("Retrieving languages:" + this.project.languagesUrl);
+                const response = await axios.get(this.project.languagesUrl);
                 const total = Object.values(response.data).reduce((acc, val) => acc + val, 0);
                 this.languages = Object.fromEntries(
                     Object.entries(response.data).map(([lang, bytes]) => [
@@ -111,6 +73,7 @@ export default {
     },
 };
 </script>
+
 <style scoped>
 .card {
     background: #fff;
@@ -121,45 +84,53 @@ export default {
     align-self: start;
     width: 100%;
     max-width: 400px;
+    min-height: 100%;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+
 .card:hover {
     transform: translateY(-5px);
     box-shadow: 0px 12px 24px rgba(0, 0, 0, 0.2);
 }
+
 h3 {
     font-size: 1.5em;
     margin-bottom: 10px;
     color: #333;
 }
+
 .project-image {
     width: 100%;
     height: auto;
     border-radius: 8px;
     margin-bottom: 15px;
 }
+
 .description {
     font-size: 1em;
     color: #555;
     margin-bottom: 15px;
 }
-.links-container {
-    display: flex;
-    align-items: center; /* Align items to the center */
-    gap: 10px; /* Adds spacing between items */
-    flex-wrap: wrap; /* Ensures items wrap if screen size is too small */
+
+.date {
+    font-style: italic;
 }
-/* .repo {
-    margin-top: 15px;
-} */
+
+.links-container {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
 .btn {
     display: inline-block;
-    /* margin: 5px 0; */
-    padding: 10px 20px;
+    padding: 5px 10px;
     background: transparent;
     color: #333;
     text-decoration: none;
-    border: 2px solid #333;
+    border: 1px solid #333;
     border-radius: 8px;
     font-size: 1em;
     text-align: center;
@@ -170,9 +141,11 @@ h3 {
     background: #333;
     color: white;
 }
+
 .icon {
     margin-right: 3px;
 }
+
 .languages {
     display: flex;
     flex-direction: column;
