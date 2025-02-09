@@ -54,6 +54,7 @@ export default {
 .portrait {
     width: 250px;
     height: 250px;
+    margin: 0 20px;
     border-radius: 50%;
     box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.2);
     object-fit: cover;
@@ -84,6 +85,8 @@ export default {
     }
 
     .portrait {
+        width: 200px;
+        height: 200px;
         margin-bottom: 20px;
     }
 

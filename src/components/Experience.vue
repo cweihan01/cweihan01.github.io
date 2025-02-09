@@ -44,6 +44,19 @@ export default {
                         'Modi aut dolores dignissimos sequi sit ut aliquid molestias deserunt illo',
                     ],
                 },
+                {
+                    id: 4,
+                    years: '2010 - 2013',
+                    title: 'Title',
+                    company: 'Company',
+                    description:
+                        'Voluptatibus veniam ea reprehenderit atque reiciendis non laborum adipisci ipsa pariatur omnis.',
+                    points: [
+                        'Rerum sit libero possimus amet excepturi',
+                        'Exercitationem enim dolores sunt praesentium dolorum praesentium',
+                        'Modi aut dolores dignissimos sequi sit ut aliquid molestias deserunt illo',
+                    ],
+                },
             ],
         };
     },
@@ -59,7 +72,8 @@ export default {
             <div class="entry" v-for="experience in experiences" :key="experience.id">
                 <div class="title">
                     <h3>{{ experience.years }}</h3>
-                    <p>{{ experience.title }}, {{ experience.company }}</p>
+                    <p>{{ experience.title }}</p>
+                    <p>{{ experience.company }}</p>
                 </div>
                 <div class="body">
                     <p>{{ experience.description }}</p>
@@ -77,8 +91,9 @@ export default {
     width: 100%;
     /* max-width: 800px; */
     /* background: #fff; */
-    padding: 100px 50px;
-    padding-bottom: 200px;
+    padding: 0 50px;
+    padding-top: 20px;
+    /* padding-bottom: 150px; */
     position: relative;
     /* box-shadow: 0.5rem 0.5rem 2rem 0 rgba(0, 0, 0, 0.2); */
     /* display: flex;
@@ -90,16 +105,28 @@ export default {
     content: '';
     position: absolute;
     top: 0;
-    left: calc(33% + 19px);
     bottom: 0;
+    /* bottom: 30px; */
+    left: calc(33% + 19px);
     width: 4px;
-    background: #ddd;
+    /* background: #ddd; */
+    border-radius: 2px;
+
+    background: linear-gradient(
+        to bottom,
+        rgba(100, 100, 100, 0.8),
+        rgba(150, 150, 150, 0.8) 50%,
+        rgba(200, 200, 200, 0.8) 100%
+    );
+    transition: background 0.5s ease;
 }
-.entry {
+
+.entry::after {
+    content: '';
+    display: table;
     clear: both;
-    text-align: left;
-    position: relative;
 }
+
 .title {
     margin-bottom: 0.5em;
     float: left;
@@ -115,15 +142,15 @@ export default {
     position: absolute;
     width: 8px;
     height: 8px;
-    border: 4px solid salmon;
+    border: 4px solid rgb(93, 93, 241);
     background-color: #fff;
     border-radius: 100%;
-    top: 15%;
+    top: 10px;
     right: -8px;
     z-index: 99;
 }
 .body {
-    margin: 0 0 3em;
+    margin: 0 0 20px;
     float: right;
     width: 66%;
     padding-left: 30px;
@@ -133,7 +160,7 @@ export default {
     font-weight: 400;
 }
 .body ul {
-    color: #aaa;
+    color: #353535;
     padding-left: 0;
     list-style-type: none;
 }
