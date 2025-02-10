@@ -1,19 +1,42 @@
 {
     "categories": [
         { "name": "all", "label": "All", "icon": "fas fa-globe" },
+        { "name": "language", "label": "Languages", "icon": "fas fa-terminal" },
         { "name": "frontend", "label": "Frontend", "icon": "fas fa-code" },
-        { "name": "backend", "label": "Backend", "icon": "fas fa-database" }
+        { "name": "backend", "label": "Backend", "icon": "fas fa-server" },
+        { "name": "data", "label": "Data/ML", "icon": "fas fa-chart-line" },
+        { "name": "general", "label": "Tools", "icon": "fas fa-gear" }
     ],
     "skills": [
-        { "name": "JavaScript", "icon": "fab fa-js", "category": "frontend", "proficiency": 90 },
-        { "name": "Python", "icon": "fab fa-python", "category": "backend", "proficiency": 85 },
-        { "name": "HTML", "icon": "fab fa-html5", "category": "frontend", "proficiency": 85 },
-        { "name": "CSS", "icon": "fab fa-css3", "category": "frontend", "proficiency": 80 },
-        { "name": "Vue.js", "icon": "fab fa-vuejs", "category": "frontend", "proficiency": 75 },
-        { "name": "React.js", "icon": "fab fa-react", "category": "frontend", "proficiency": 75 },
+        { "name": "JavaScript", "icon": "fab fa-js", "category": "language", "proficiency": 85 },
+        { "name": "Python", "icon": "fab fa-python", "category": "language", "proficiency": 90 },
+        { "name": "C++", "icon": "fas fa-c", "category": "language", "proficiency": 80 },
+        { "name": "C", "icon": "fas fa-c", "category": "language", "proficiency": 60 },
+        { "name": "HTML", "icon": "fab fa-html5", "category": "language", "proficiency": 85 },
+        { "name": "CSS", "icon": "fab fa-css3", "category": "language", "proficiency": 80 },
+        { "name": "SQL", "icon": "fas fa-table-list", "category": "language", "proficiency": 75 },
+        { "name": "Java", "icon": "fab fa-java", "category": "language", "proficiency": 70 },
+
+        { "name": "React.js", "icon": "fab fa-react", "category": "frontend", "proficiency": 90 },
+        { "name": "Next.js", "icon": "fas fa-n", "category": "frontend", "proficiency": 80 },
+        { "name": "Vue.js", "icon": "fab fa-vuejs", "category": "frontend", "proficiency": 70 },
+
+        { "name": "Django", "icon": "fas fa-d", "category": "backend", "proficiency": 90 },
+        { "name": "Flask", "icon": "fas fa-pepper-hot", "category": "backend", "proficiency": 80 },
+        { "name": "PostgreSQL", "icon": "fas fa-table", "category": "backend", "proficiency": 85 },
+        { "name": "MongoDB", "icon": "fas fa-file-code", "category": "backend", "proficiency": 85 },
         { "name": "Node.js", "icon": "fab fa-node-js", "category": "backend", "proficiency": 70 },
-        { "name": "SQL", "icon": "fas fa-database", "category": "backend", "proficiency": 80 },
+
+        { "name": "pandas", "icon": "fas fa-bars-staggered", "category": "data", "proficiency": 85 },
+        { "name": "NumPy", "icon": "fas fa-cubes", "category": "data", "proficiency": 70 },
+        { "name": "PyTorch", "icon": "fas fa-p", "category": "data", "proficiency": 65 },
+        { "name": "TensorFlow", "icon": "fas fa-t", "category": "data", "proficiency": 60 },
+        
         { "name": "Git", "icon": "fab fa-git", "category": "general", "proficiency": 85 },
-        { "name": "Docker", "icon": "fab fa-docker", "category": "general", "proficiency": 70 }
+        { "name": "Docker", "icon": "fab fa-docker", "category": "general", "proficiency": 75 },
+        { "name": "Kubernetes", "icon": "fas fa-hexagon-nodes", "category": "general", "proficiency": 65 },
+        { "name": "Ansible", "icon": "fas fa-a", "category": "general", "proficiency": 75 },
+        { "name": "AWS", "icon": "fab fa-aws", "category": "general", "proficiency": 70 },
+        { "name": "Postman", "icon": "fas fa-paper-plane", "category": "general", "proficiency": 75 }
     ]
 }

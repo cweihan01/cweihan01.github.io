@@ -1,58 +1,95 @@
 [
     {
-        "id": 1,
-        "years": "2014 - Present",
-        "title": "Title",
-        "company": "Company",
-        "description": "Voluptatibus veniam ea reprehenderit atque reiciendis non laborum adipisci ipsa pariatur omnis.",
+        "title": "Undergraduate Researcher",
+        "company": "Sensors and Robotics for Infrastructure Lab",
+        "location": "UCLA",
+        "startDate": "Dec 2024",
+        "endDate": "Present",
+        "description": "",
         "points": [
-            "Rerum sit libero possimus amet excepturi",
-            "Exercitationem enim dolores sunt praesentium dolorum praesentium",
-            "Modi aut dolores dignissimos sequi sit ut aliquid molestias deserunt illo"
+            "Integrate Livox & ZED SDKs, ROS 2, and YOLOv8 to enable object detection and localization for an autonomous robot."
         ]
     },
     {
-        "id": 2,
-        "years": "2010 - Present",
-        "title": "Title",
-        "company": "Company",
-        "description": "Voluptatibus veniam ea reprehenderit atque reiciendis non laborum adipisci ipsa pariatur omnis.",
+        "title": "Full Stack Developer",
+        "company": "Orsulic Lab",
+        "location": "UCLA",
+        "startDate": "Sep 2024",
+        "endDate": "Present",
+        "description": "",
         "points": [
-            "Rerum sit libero possimus amet excepturi",
-            "Exercitationem enim dolores sunt praesentium dolorum praesentium",
-            "Modi aut dolores dignissimos sequi sit ut aliquid molestias deserunt illo"
+            "Architect and implement a PostgreSQL database on AWS, centralizing 50k+ records.",
+            "Develop interactive visualizations using Django REST API, Plotly, and React for seamless querying and real-time updates."
         ]
     },
     {
-        "id": 3,
-        "years": "2010 - 2013",
-        "title": "Title",
-        "company": "Company",
-        "description": "Voluptatibus veniam ea reprehenderit atque reiciendis non laborum adipisci ipsa pariatur omnis.",
+        "title": "Frontend Developer",
+        "company": "Association for Computing Machinery (ACM)",
+        "location": "UCLA",
+        "startDate": "Apr 2024",
+        "endDate": "Present",
+        "description": "",
         "points": [
-            "Rerum sit libero possimus amet excepturi",
-            "Exercitationem enim dolores sunt praesentium dolorum praesentium",
-            "Modi aut dolores dignissimos sequi sit ut aliquid molestias deserunt illo"
+            "Enhance ACM at UCLA's website, built with Next.js, which was recognized with ACM HQ's Outstanding Website Award among 680 chapters.",
+            "Responsible for integrating the new ACM Cloud committee and launching partnership and alumni pages."
         ]
     },
     {
-        "id": 4,
-        "years": "2010 - 2013",
-        "title": "Title",
-        "company": "Company",
-        "description": "Voluptatibus veniam ea reprehenderit atque reiciendis non laborum adipisci ipsa pariatur omnis.",
+        "title": "Data Consultant",
+        "company": "Data Resolutions",
+        "location": "UCLA",
+        "startDate": "Sep 2024",
+        "endDate": "Present",
+        "description": "",
         "points": [
-            "Rerum sit libero possimus amet excepturi",
-            "Exercitationem enim dolores sunt praesentium dolorum praesentium",
-            "Modi aut dolores dignissimos sequi sit ut aliquid molestias deserunt illo"
+            "Collaborate with external clients to derive actionable insights from data, enhancing decision-making through analytical solutions."
         ]
     },
     {
-        "id": 5,
-        "years": "2010 - 2013",
-        "title": "Title",
-        "company": "Company",
-        "description": "Voluptatibus veniam ea reprehenderit atque reiciendis non laborum adipisci ipsa pariatur omnis.",
-        "points": ["Rerum sit libero possimus amet excepturi"]
+        "title": "Peer Learning Facilitator",
+        "company": "Academic Advancement Program",
+        "location": "UCLA",
+        "startDate": "Jan 2025",
+        "endDate": "Present",
+        "description": "",
+        "points": [
+            "Lead biweekly peer learning sessions for PIC 10B (Intermediate Programming with C++), facilitating discussions and helping peers develop programming skills in a collaborative environment."
+        ]
+    },
+    {
+        "title": "Digital Transformation Intern",
+        "company": "IMDA",
+        "location": "Singapore",
+        "startDate": "Jun 2024",
+        "endDate": "Sep 2024",
+        "description": "",
+        "points": [
+            "Researched and formulated strategies to support digital transformation and commercialization of SMEs to drive industry-wide impact.",
+            "Collaborated on a generative AI POC, cutting preparation time by 85% and advancing as a finalist in an internal hackathon."
+        ]
+    },
+    {
+        "title": "DevSecOps Engineering Intern",
+        "company": "DSTA",
+        "location": "Singapore",
+        "startDate": "Aug 2023",
+        "endDate": "Sep 2023",
+        "description": "",
+        "points": [
+            "Deployed a knowledge platform in an air-gapped network using Docker and Kubernetes.",
+            "Secured connections with Nginx reverse proxy and configured DNS for network routing.",
+            "Automated server setup and maintenance with Ansible and shell scripts."
+        ]
+    },
+    {
+        "title": "Software Engineering Intern",
+        "company": "HTX",
+        "location": "Singapore",
+        "startDate": "Jan 2023",
+        "endDate": "May 2023",
+        "description": "",
+        "points": [
+            "Developed a bot for automated social media monitoring, incorporating topic modeling and a web dashboard for historical analysis."
+        ]
     }
 ]

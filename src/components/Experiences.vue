@@ -17,11 +17,11 @@ export default {
 <template>
     <SectionWrapper sectionId="experience" title="Experience">
         <div class="timeline">
-            <div class="entry" v-for="experience in experiences" :key="experience.id">
+            <div class="entry" v-for="(experience, idx) in experiences" :key="idx">
                 <div class="title">
-                    <h3>{{ experience.years }}</h3>
-                    <p>{{ experience.title }}</p>
-                    <p>{{ experience.company }}</p>
+                    <p class="date">{{ experience.startDate }} - {{ experience.endDate }}</p>
+                    <p class="position">{{ experience.title }}</p>
+                    <p class="company">{{ experience.company }}, {{ experience.location }}</p>
                 </div>
                 <div class="body">
                     <p>{{ experience.description }}</p>
@@ -39,7 +39,7 @@ export default {
     width: 100%;
     /* max-width: 800px; */
     /* background: #fff; */
-    padding: 0 50px;
+    padding: 0 30px;
     padding-top: 20px;
     /* padding-bottom: 150px; */
     position: relative;
@@ -55,7 +55,8 @@ export default {
     top: 0;
     bottom: 0;
     /* bottom: 30px; */
-    left: calc(33% + 19px);
+    /* left: calc(40% + 19px); */
+    left: calc(40%);
     width: 4px;
     /* background: #ddd; */
     border-radius: 2px;
@@ -69,6 +70,12 @@ export default {
     transition: background 0.5s ease;
 }
 
+.entry {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
 .entry::after {
     content: '';
     display: table;
@@ -78,8 +85,8 @@ export default {
 .title {
     margin-bottom: 0.5em;
     float: left;
-    width: 33%;
-    padding-right: 30px;
+    width: 40%;
+    padding-right: 50px;
     text-align: right;
     position: relative;
 }
@@ -90,17 +97,28 @@ export default {
     position: absolute;
     width: 8px;
     height: 8px;
-    border: 4px solid rgb(93, 93, 241);
+    border: 6px solid rgb(93, 93, 241);
     background-color: #fff;
     border-radius: 100%;
-    top: 10px;
-    right: -8px;
+    top: 50%;
+    right: -2px;
     z-index: 99;
 }
+
+.position {
+    font-weight: bold;
+    font-size: 1.2em;
+    color: #222;
+}
+
+.company {
+    font-size: 0.9em;
+    color: #666;
+}
+
 .body {
-    margin: 0 0 20px;
     float: right;
-    width: 66%;
+    width: 60%;
     padding-left: 30px;
 }
 .body p {
@@ -109,11 +127,51 @@ export default {
 }
 .body ul {
     color: #353535;
-    padding-left: 0;
-    list-style-type: none;
+    padding-left: 20px;
+    list-style-type: disc;
 }
-.body ul li:before {
+/* .body ul li:before {
     content: '•';
     margin-right: 0.5em;
+} */
+
+@media (max-width: 768px) {
+    .timeline {
+        padding: 0 20px;
+        padding-top: 20px;
+    }
+    .title:before {
+        right: -4px;
+    }
+
+    /*
+    .timeline:before {
+        left: 50px;
+    }
+    
+    .entry {
+        flex-direction: column;
+        width: 100%;
+        align-items: end;
+    }
+    
+    .title {
+        text-align: left;
+        width: 90%;
+        padding-right: 0;
+    }
+    
+    */
+    /*
+    .title:before {
+        top: 50%;
+        left: -31px;
+        right: auto;
+    }
+        
+    .body {
+        width: 90%;
+        padding-left: 0;
+    } */
 }
 </style>

@@ -5,13 +5,13 @@
             <p class="headline">{{ aboutInfo.headline }}</p>
             <div class="icons-container">
                 <a :href="aboutInfo.linkedin" target="_blank" aria-label="LinkedIn">
-                    <fa-icon icon="fab fa-linkedin" size="2x" class="social-icons" />
+                    <fa-icon icon="fab fa-linkedin" size="3x" class="social-icons" />
                 </a>
                 <a :href="aboutInfo.github" target="_blank" aria-label="GitHub">
-                    <fa-icon icon="fab fa-github" size="2x" class="social-icons" />
+                    <fa-icon icon="fab fa-github" size="3x" class="social-icons" />
                 </a>
                 <a :href="aboutInfo.email" target="_blank" aria-label="Email">
-                    <fa-icon icon="fas fa-envelope" size="2x" class="social-icons" />
+                    <fa-icon icon="fas fa-envelope" size="3x" class="social-icons" />
                 </a>
             </div>
         </div>
@@ -56,9 +56,10 @@ export default {
 }
 
 .name {
-    font-size: 3em;
+    font-size: 5em;
     font-weight: bold;
     margin-bottom: 10px;
+    line-height: 100px;
 }
 
 .headline {

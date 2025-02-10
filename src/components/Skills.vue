@@ -97,13 +97,19 @@ export default {
 
 @media (max-width: 768px) {
     .nav-bar {
-        width: 100%;
-        border-radius: 15px;
         flex-direction: row;
+        width: 100%;
+        overflow-x: auto;
+        border-radius: 15px;
+        gap: 5px;
     }
 
     .nav-item {
         flex: 1;
+    }
+
+    .category-icon {
+        transform: scale(0.8);
     }
 }
 
