@@ -122,6 +122,7 @@ h3 {
 
 .date {
     font-style: italic;
+    color: #555;
 }
 
 .links-container {

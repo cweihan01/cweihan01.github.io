@@ -105,6 +105,11 @@ export default {
     z-index: 99;
 }
 
+.date {
+    font-size: 1em;
+    color: #666;
+}
+
 .position {
     font-weight: bold;
     font-size: 1.2em;
@@ -137,11 +142,22 @@ export default {
 
 @media (max-width: 768px) {
     .timeline {
-        padding: 0 20px;
+        padding: 0;
+        /* padding: 0 20px; */
         padding-top: 20px;
     }
+
+    .title {
+        padding-right: 30px;
+    }
+
     .title:before {
-        right: -4px;
+        /* right: -4px; */
+        right: -8px;
+    }
+
+    .position {
+        font-size: 1.1em;
     }
 
     /*
