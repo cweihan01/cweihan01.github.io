@@ -1,6 +1,8 @@
 <template>
     <div class="card">
-        <img :src="project.image" alt="Project Image" class="project-image" />
+        <div class="image-container">
+            <img :src="project.image" alt="Project Image" class="project-image" />
+        </div>
         <h3>{{ project.displayName }}</h3>
         <p class="description">
             {{ project.displayDescription || project.repoDescription }}
@@ -99,11 +101,17 @@ h3 {
     color: #333;
 }
 
+.image-container {
+    min-height: 150px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
 .project-image {
     width: 100%;
     height: auto;
     border-radius: 8px;
-    margin-bottom: 15px;
 }
 
 .description {
