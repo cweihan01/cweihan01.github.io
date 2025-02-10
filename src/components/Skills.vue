@@ -106,7 +106,9 @@ export default {
     }
 
     .nav-item {
-        flex: 1;
+        display: flex;
+        gap: 5px;
+        padding: 10px 20px;
     }
 
     .category-icon {
