@@ -21,7 +21,7 @@ export default {
         <div class="footer-content">
             <p class="footer-text">
                 Contact me at
-                <a :href="aboutInfo.contactLink" target="_blank">{{ aboutInfo.contact }}</a>
+                <a :href="aboutInfo.email" target="_blank">{{ aboutInfo.emailText }}</a>
             </p>
             <p class="footer-text">
                 Made with
