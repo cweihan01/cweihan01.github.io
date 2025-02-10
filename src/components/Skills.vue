@@ -60,6 +60,7 @@ export default {
 
 <style scoped>
 .skills-container {
+    color: black;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -109,6 +110,7 @@ export default {
     }
 
     .category-icon {
+        color: black;
         transform: scale(0.8);
     }
 }
@@ -142,6 +144,10 @@ export default {
     grid-template-columns: 25% 75%;
     align-items: center;
     gap: 10px;
+}
+
+.skill-name {
+    color: black;
 }
 
 .skill-icon {
