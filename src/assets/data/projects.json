@@ -12,17 +12,29 @@
         ]
     },
     {
-        "displayName": "remembrall",
-        "repoName": "remembrall",
-        "displayDescription": "Full stack productivity web application",
-        "image": "remembrall.png",
-        "links": []
+        "displayName": "JARVIS Health",
+        "repoName": "jarvis-health",
+        "displayDescription": "TreeHacks 2025",
+        "image": "jarvis.png",
+        "links": [
+            {
+                "text": "Devpost",
+                "url": "https://devpost.com/software/jarvis-health"
+            }
+        ]
     },
     {
         "displayName": "Personal Website",
         "repoName": "cweihan01.github.io",
         "displayDescription": "Personal website you are seeing right now!",
         "image": "website.png",
+        "links": []
+    },
+    {
+        "displayName": "remembrall",
+        "repoName": "remembrall",
+        "displayDescription": "Full stack productivity web application",
+        "image": "remembrall.png",
         "links": []
     }
 ]

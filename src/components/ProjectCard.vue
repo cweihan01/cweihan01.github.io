@@ -53,10 +53,9 @@ export default {
                 const response = await axios.get(this.project.languagesUrl);
                 const total = Object.values(response.data).reduce((acc, val) => acc + val, 0);
                 this.languages = Object.fromEntries(
-                    Object.entries(response.data).map(([lang, bytes]) => [
-                        lang,
-                        ((bytes / total) * 100).toFixed(1),
-                    ])
+                    Object.entries(response.data)
+                        .map(([lang, bytes]) => [lang, ((bytes / total) * 100).toFixed(1)])
+                        .slice(0, 4)
                 );
             }
         } catch (error) {
