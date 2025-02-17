@@ -77,7 +77,6 @@ export default {
 .nav-bar {
     display: flex;
     flex-direction: column;
-    width: 20%;
     gap: 10px;
     background: #f4f4f4;
     padding: 15px 20px;

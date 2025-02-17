@@ -26,7 +26,10 @@ export default {
     computed: {
         contentWidth() {
             // Return 100% on small screens or based on isContentSize
-            return this.windowWidth <= 768 ? '100%' : this.isContentSize ? '80%' : '100%';
+            if (this.windowWidth <= 768) return '100%';
+            else if (this.windowWidth <= 1024) return this.isContentSize ? '90%' : '100%';
+            else return this.isContentSize ? '80%' : '100%';
+            // return this.windowWidth <= 768 ? '100%' : this.isContentSize ? '80%' : '100%';
         },
     },
     mounted() {
