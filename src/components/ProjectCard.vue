@@ -103,6 +103,7 @@ h3 {
 
 .image-container {
     min-height: 150px;
+    height: 240px;
     display: flex;
     align-items: center;
     margin-bottom: 10px;
@@ -111,7 +112,23 @@ h3 {
 .project-image {
     width: 100%;
     height: auto;
+    /* width: auto; */
+    object-fit: contain;
+    max-height: 100%;
     border-radius: 8px;
+    margin: auto;
+}
+
+@media (max-width: 1024px) {
+    .image-container {
+        height: 150px;
+    }
+}
+
+@media (max-width: 768px) {
+    .image-container {
+        height: 150px;
+    }
 }
 
 .description {

@@ -61,21 +61,25 @@ export default {
 }
 .grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Two columns */
+    /* grid-template-columns: repeat(3, 1fr); */
+    grid-template-columns: repeat(2, 1fr);
     gap: 50px;
     justify-items: center;
     /* align-items: center; */
     /* align-items: stretch; */
     margin: auto;
 }
-@media (max-width: 1024px) {
+
+/* @media (max-width: 1024px) {
     .grid {
-        grid-template-columns: repeat(2, 1fr); /* Single column layout */
+        grid-template-columns: repeat(2, 1fr);
     }
-}
+} */
+
 @media (max-width: 768px) {
     .grid {
-        grid-template-columns: 1fr; /* Single column layout */
+        grid-template-columns: 1fr;
+        gap: 30px;
     }
 }
 </style>
