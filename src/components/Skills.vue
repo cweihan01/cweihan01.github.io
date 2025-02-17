@@ -85,8 +85,9 @@ export default {
 }
 
 .nav-item {
-    display: grid;
-    grid-template-columns: 40% 60%;
+    /* display: grid; */
+    /* grid-template-columns: 40% 60%; */
+    display: flex;
     align-items: center;
     gap: 10px;
     padding: 10px;
@@ -107,7 +108,7 @@ export default {
     .nav-item {
         display: flex;
         gap: 5px;
-        padding: 10px 20px;
+        padding: 10px;
     }
 
     .category-icon {
@@ -122,7 +123,7 @@ export default {
 }
 
 .category-icon {
-    margin: auto;
+    width: 50px;
 }
 
 .skills-list {

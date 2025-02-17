@@ -70,6 +70,7 @@ export default {
 }
 
 .section-content {
+    max-width: 1824px;
     margin: auto;
     padding: 10px 0;
 }
