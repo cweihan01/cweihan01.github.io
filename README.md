@@ -1,14 +1,8 @@
-# website
+# Wei Han's Personal Website
 
-This template should help get you started developing with Vue 3 in Vite.
+View my personal website [here](https://cweihan01.github.io).
 
-## Recommended IDE Setup
-
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vite.dev/config/).
+Built using Vue.js and hosted on GitHub Pages.
 
 ## Project Setup
 
