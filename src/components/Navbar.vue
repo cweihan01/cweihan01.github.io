@@ -45,9 +45,11 @@ const scrollTo = (sectionId) => {
         section.scrollIntoView({ behavior: 'smooth' });
     }
 
-    // Force hide the navbar
-    forceHideNavbar.value = true;
-    shouldHideNavbar.value = true;
+    // Force hide the navbar if user click on any link besides 'home'
+    if (sectionId !== 'home') {
+        forceHideNavbar.value = true;
+        shouldHideNavbar.value = true;
+    }
 
     // If on mobile, close the menu after clicking
     if (isMobile.value) {
