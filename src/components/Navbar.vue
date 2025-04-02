@@ -30,7 +30,7 @@ import { ref, onMounted, onUnmounted } from 'vue';
 const menuOpen = ref(false);
 const isMobile = ref(window.innerWidth < 768);
 const shouldHideNavbar = ref(false);
-const forceHideNavbar = ref(false); 
+const forceHideNavbar = ref(false);
 let lastScrollY = window.scrollY;
 
 // Toggles the navbar menu on mobile
@@ -109,7 +109,6 @@ onUnmounted(() => {
     transform-origin: top center;
     transition: transform 1s ease, opacity 1s ease;
     opacity: 1;
-    perspective: 1000px;
 }
 
 .navbar.hide {
