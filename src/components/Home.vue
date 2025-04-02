@@ -56,10 +56,10 @@ export default {
 }
 
 .name {
-    font-size: 5em;
+    font-size: 4.5em;
     font-weight: bold;
-    margin-bottom: 10px;
-    line-height: 100px;
+    margin-bottom: 20px;
+    line-height: 90px;
 }
 
 .headline {
@@ -81,7 +81,7 @@ export default {
 
 .scroll-button {
     position: absolute;
-    bottom: 40px;
+    bottom: 50px;
     margin: auto;
     padding: 10px;
     background-color: transparent;
