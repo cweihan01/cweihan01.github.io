@@ -44,8 +44,8 @@ export default {
     /* padding-bottom: 150px; */
     position: relative;
     /* box-shadow: 0.5rem 0.5rem 2rem 0 rgba(0, 0, 0, 0.2); */
-    /* display: flex;
-    flex-direction: column; */
+    /* display: flex; */
+    /* flex-direction: column; */
 }
 
 /* Line for timeline */
@@ -58,7 +58,6 @@ export default {
     /* left: calc(40% + 19px); */
     left: calc(40%);
     width: 4px;
-    /* background: #ddd; */
     border-radius: 2px;
 
     background: linear-gradient(
@@ -73,7 +72,7 @@ export default {
 .entry {
     display: flex;
     align-items: center;
-    margin-bottom: 30px;
+    margin-bottom: 40px;
 }
 
 .entry::after {
