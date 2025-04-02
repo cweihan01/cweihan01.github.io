@@ -2,7 +2,8 @@
     {
         "displayName": "pill.ai",
         "repoName": "pillpro",
-        "displayDescription": "LA Hacks 2024 - Healthcare Track winner",
+        "caption": "LA Hacks 2024 - Healthcare Track Winner",
+        "displayDescription": "pill.ai is an AI-powered platform that prevents prescription errors by verifying medication images and doctor-patient audio using Google Gemini API. It empowers patients to take charge of their medication with a user-friendly dashboard, enhancing medication safety. Built with Gemini API, React, and Material UI.",
         "image": "pillai.png",
         "links": [
             {
@@ -14,7 +15,8 @@
     {
         "displayName": "JARVIS Health",
         "repoName": "jarvis-health",
-        "displayDescription": "TreeHacks 2025",
+        "caption": "TreeHacks 2025",
+        "displayDescription": "JARVIS Health is a tablet application designed to monitor soldiers' health during training. It aggregates heart rate and exertion data from wearable devices via the Terra API, providing commanders with a real-time overview of multiple soldiers' physical states. The platform uses OpenAI's GPT-4 models to analyze data and offer actionable insights, helping optimize training and reduce injury risk. Built with FlutterFlow, Firebase, Terra API, and OpenAI API, JARVIS Health supports data-driven decisions for safer and more effective training.",
         "image": "jarvis.png",
         "links": [
             {
@@ -26,14 +28,16 @@
     {
         "displayName": "Personal Website",
         "repoName": "cweihan01.github.io",
-        "displayDescription": "Personal website you are seeing right now!",
+        "caption": "My Journey in Software Development",
+        "displayDescription": "Built with Vue.js, this site highlights my experiences, projects, and continuous growth as I explore new opportunities and build new things.",
         "image": "website.png",
         "links": []
     },
     {
         "displayName": "remembrall",
         "repoName": "remembrall",
-        "displayDescription": "Full stack productivity web application",
+        "caption": "UCLA CS35L Final Project",
+        "displayDescription": "Built with the PERN stack (PostgreSQL, Express, React, Node.js), this full stack web application helps users manage tasks effectively. It features an interactive drag-and-drop task list, a friends system, and dynamic search filters, making task management both intuitive and efficient.",
         "image": "remembrall.png",
         "links": []
     }

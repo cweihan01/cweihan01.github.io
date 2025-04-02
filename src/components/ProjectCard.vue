@@ -4,6 +4,11 @@
             <img :src="project.image" alt="Project Image" class="project-image" />
         </div>
         <h3>{{ project.displayName }}</h3>
+
+        <p class="caption">
+            {{ project.caption }}
+        </p>
+
         <p class="description">
             {{ project.displayDescription || project.repoDescription }}
         </p>
@@ -95,7 +100,7 @@ export default {
 }
 
 h3 {
-    font-size: 1.5em;
+    font-size: 1.7em;
     margin-bottom: 10px;
     color: #333;
 }
@@ -111,7 +116,6 @@ h3 {
 .project-image {
     width: 100%;
     height: auto;
-    /* width: auto; */
     object-fit: contain;
     max-height: 100%;
     border-radius: 8px;
@@ -128,6 +132,12 @@ h3 {
     .image-container {
         height: 150px;
     }
+}
+
+.caption {
+    font-size: 1.2em;
+    color: #282828;
+    margin-bottom: 15px;
 }
 
 .description {
