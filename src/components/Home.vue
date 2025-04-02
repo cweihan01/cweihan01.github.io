@@ -1,5 +1,5 @@
 <template>
-    <div class="home-page">
+    <div class="home-page" id="home">
         <div class="intro-section">
             <h1 class="name">{{ aboutInfo.firstName + ' ' + aboutInfo.lastName }}</h1>
             <p class="headline">{{ aboutInfo.headline }}</p>
@@ -83,8 +83,6 @@ export default {
     position: absolute;
     bottom: 40px;
     margin: auto;
-    /* left: 50%; */
-    /* transform: translateX(-50%); */
     padding: 10px;
     background-color: transparent;
     border: none;
