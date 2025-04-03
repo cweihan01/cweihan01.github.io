@@ -3,42 +3,46 @@
         "displayName": "pill.ai",
         "repoName": "pillpro",
         "caption": "LA Hacks 2024 - Healthcare Track Winner",
-        "displayDescription": "pill.ai is an AI-powered platform that prevents prescription errors by verifying medication images and doctor-patient audio using Google Gemini API. It empowers patients to take charge of their medication with a user-friendly dashboard, enhancing medication safety. Built with Gemini API, React, and Material UI.",
+        "displayDescription": "pill.ai is an AI-powered platform that prevents prescription errors by verifying medication images and doctor-patient audio using Google's Gemini API. It empowers patients to take charge of their medication with a user-friendly dashboard, enhancing medication safety.",
         "image": "pillai.png",
         "links": [
             {
                 "text": "Devpost",
                 "url": "https://devpost.com/software/pill-ai"
             }
-        ]
+        ],
+        "technologies": ["Gemini API", "React", "Material UI"]
     },
     {
         "displayName": "JARVIS Health",
         "repoName": "jarvis-health",
         "caption": "TreeHacks 2025",
-        "displayDescription": "JARVIS Health is a tablet application designed to monitor soldiers' health during training. It aggregates heart rate and exertion data from wearable devices via the Terra API, providing commanders with a real-time overview of multiple soldiers' physical states. The platform uses OpenAI's GPT-4 models to analyze data and offer actionable insights, helping optimize training and reduce injury risk. Built with FlutterFlow, Firebase, Terra API, and OpenAI API, JARVIS Health supports data-driven decisions for safer and more effective training.",
+        "displayDescription": "JARVIS Health is a tablet application designed to monitor soldiers' health during training. It aggregates heart rate and exertion data from wearable devices via the Terra API, providing commanders with a real-time overview of multiple soldiers' physical states. The platform uses OpenAI's GPT-4 models to analyze data and offer actionable insights, supporting data-driven decisions for safer and more effective training.",
         "image": "jarvis.png",
         "links": [
             {
                 "text": "Devpost",
                 "url": "https://devpost.com/software/jarvis-health"
             }
-        ]
+        ],
+        "technologies": ["FlutterFlow", "Firebase", "Terra API", "OpenAI API"]
     },
     {
         "displayName": "Personal Website",
         "repoName": "cweihan01.github.io",
         "caption": "My Journey in Software Development",
-        "displayDescription": "Built with Vue.js, this site highlights my experiences, projects, and continuous growth as I explore new opportunities and build new things.",
+        "displayDescription": "This website highlights my experiences, projects, and continuous growth as I explore new opportunities and build new things.",
         "image": "website.png",
-        "links": []
+        "links": [],
+        "technologies": ["Vue.js", "GitHub API"]
     },
     {
         "displayName": "remembrall",
         "repoName": "remembrall",
         "caption": "UCLA CS35L Final Project",
-        "displayDescription": "Built with the PERN stack (PostgreSQL, Express, React, Node.js), this full stack web application helps users manage tasks effectively. It features an interactive drag-and-drop task list, a friends system, and dynamic search filters, making task management both intuitive and efficient.",
+        "displayDescription": "Built with the PERN stack, this full stack web application helps users manage tasks effectively. It features an interactive drag-and-drop task list, a friends system, and dynamic search filters, making task management intuitive, collaborative, and efficient.",
         "image": "remembrall.png",
-        "links": []
+        "links": [],
+        "technologies": ["PostgreSQL", "Express.js", "React", "Node.js"]
     }
 ]

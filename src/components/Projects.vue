@@ -35,8 +35,8 @@ export default {
                     const updatedProject = {
                         ...project, // Keep original custom project data
                         repoDescription: githubRepo.data.description || 'No description available.',
-                        stargazers_count: githubRepo.data.stargazers_count,
-                        pushed_at: githubRepo.data.pushed_at,
+                        stargazersCount: githubRepo.data.stargazers_count,
+                        pushedAt: githubRepo.data.pushed_at,
                         languagesUrl: githubRepo.data.languages_url,
                         repoLink: githubRepo.data.html_url,
                     };

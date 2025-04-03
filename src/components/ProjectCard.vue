@@ -13,7 +13,7 @@
             {{ project.displayDescription || project.repoDescription }}
         </p>
 
-        <p class="date">Last updated: {{ formatDate(project.pushed_at) }}</p>
+        <p class="date">Last updated: {{ formatDate(project.pushedAt) }}</p>
 
         <div class="links-container">
             <a :href="project.repoLink" target="_blank" class="btn repo-btn">
@@ -24,6 +24,12 @@
                 <a :href="link.url" target="_blank" class="btn">
                     {{ link.text }}
                 </a>
+            </div>
+        </div>
+
+        <div class="technologies-container">
+            <div v-for="(tech, index) in project.technologies" :key="index" class="technology-box">
+                {{ tech }}
             </div>
         </div>
 
@@ -179,6 +185,27 @@ h3 {
 
 .icon {
     margin-right: 3px;
+}
+
+.technologies-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.technology-box {
+    padding: 3px 7px;
+    border: 1px solid #a3a3a3;
+    border-radius: 4px;
+    background: #f9f9f9;
+    font-size: 0.9em;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.technology-box:hover {
+    background: #333;
+    color: white;
 }
 
 .languages {
