@@ -39,7 +39,6 @@
                 <p class="footer-text text-sm">
                     <a :href="aboutInfo.sourceCode" target="_blank">
                         Source Code
-                        <fa-icon icon="fas fa-arrow-up-right-from-square" />
                     </a>
                 </p>
 
