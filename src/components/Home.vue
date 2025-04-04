@@ -75,6 +75,18 @@ export default {
     margin-bottom: 30px;
 }
 
+.icons-container a {
+    border-radius: 4px;
+}
+
+.icons-container a:hover {
+    background-color: rgb(187, 205, 204);
+
+    .social-icons {
+        color: rgb(57, 57, 149);
+    }
+}
+
 .social-icons {
     color: rgb(94, 94, 118);
 }

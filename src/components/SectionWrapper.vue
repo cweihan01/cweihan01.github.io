@@ -49,7 +49,7 @@ export default {
 <template>
     <div class="section-wrapper" :id="sectionId" :style="{ backgroundColor: bgColor }">
         <div class="section-content" :style="{ width: contentWidth }">
-            <h2 class="section-title">{{ title }}</h2>
+            <h2 class="section-title" v-if="title">{{ title }}</h2>
             <slot></slot>
         </div>
     </div>
