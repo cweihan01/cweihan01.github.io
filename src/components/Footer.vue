@@ -1,6 +1,6 @@
 <template>
-    <SectionWrapper sectionId="footer" title="" bgColor="f4f4f4">
-        <footer class="footer">
+    <footer class="footer">
+        <SectionWrapper sectionId="footer" title="" bgColor="#f4f4f4">
             <!-- Title and footnote -->
             <div class="footer-header">
                 <h2 class="footer-title">Contact Me!</h2>
@@ -12,7 +12,7 @@
             <!-- Body -->
             <div class="footer-body">
                 <!-- Social links -->
-                <p class="footer-text text-lg">
+                <p class="footer-text text-md">
                     Contact me at
                     <a :href="aboutInfo.email" target="_blank">{{ aboutInfo.emailText }}</a>
                 </p>
@@ -26,7 +26,7 @@
                 </div>
 
                 <!-- Made with -->
-                <p class="footer-text text-md">
+                <p class="footer-text text-sm">
                     Made with
                     <fa-icon icon="fas fa-mug-hot" style="color: #967259" />
                     by {{ aboutInfo.firstName }} using
@@ -36,7 +36,7 @@
                 </p>
 
                 <!-- Source code link -->
-                <p class="footer-text">
+                <p class="footer-text text-sm">
                     <a :href="aboutInfo.sourceCode" target="_blank">
                         Source Code
                         <fa-icon icon="fas fa-arrow-up-right-from-square" />
@@ -85,8 +85,8 @@
                     </div>
                 </div>
             </div>
-        </footer>
-    </SectionWrapper>
+        </SectionWrapper>
+    </footer>
 </template>
 
 <script>
@@ -147,6 +147,7 @@ export default {
 
 <style scoped>
 .footer {
+    border-top: 2px solid #ddd;
     text-align: center;
 }
 
@@ -155,14 +156,14 @@ export default {
 }
 
 .footer-title {
-    font-size: 3em;
+    font-size: 2.6em;
     color: #333;
     margin: 0;
     margin-bottom: 10px;
 }
 
 .footer-subtitle {
-    font-size: 1.2em;
+    font-size: 1.1em;
     color: #666;
     margin: 5px 0 15px 0;
 }
@@ -198,10 +199,6 @@ export default {
 
 .footer a:hover {
     text-decoration: underline;
-}
-
-.text-lg {
-    font-size: 1.1em;
 }
 
 .text-md {
