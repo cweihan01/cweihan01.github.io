@@ -112,7 +112,6 @@ export default {
     }
 
     .category-icon {
-        color: black;
         transform: scale(0.8);
     }
 }
@@ -124,6 +123,7 @@ export default {
 
 .category-icon {
     width: 50px;
+    color: #333;
 }
 
 .skills-list {
@@ -149,7 +149,7 @@ export default {
 }
 
 .skill-name {
-    color: black;
+    color: #333;
 }
 
 .skill-icon {

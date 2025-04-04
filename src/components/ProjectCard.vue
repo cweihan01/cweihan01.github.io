@@ -192,6 +192,7 @@ h3 {
     flex-wrap: wrap;
     gap: 10px;
     margin-top: 15px;
+    color: #333;
 }
 
 .technology-box {
