@@ -6,11 +6,35 @@ export default {
     data() {
         return {
             selectedCategory: 'all',
+            intersected: {},
             ...skills,
         };
     },
+    directives: {
+        /** Create v-intersect directive that updates intersected with new entry. */
+        intersect: {
+            mounted(el, { instance, value }) {
+                const obs = new IntersectionObserver(
+                    ([entry]) => {
+                        if (entry.isIntersecting) {
+                            instance.intersected[value] = true;
+                            obs.unobserve(el);
+                        }
+                    },
+                    { threshold: 0.5 }
+                );
+                obs.observe(el);
+            },
+        },
+    },
+    watch: {
+        /** Reset intersected when tab changed. */
+        selectedCategory() {
+            this.intersected = {};
+        },
+    },
     computed: {
-        /** Filters skills by `selectedCategory`, and sorts in descending order of proficiency. */
+        /** Filter skills by selectedCategory and sort in descending proficiency level. */
         filteredSkills() {
             let skillsList =
                 this.selectedCategory === 'all'
@@ -43,13 +67,23 @@ export default {
             </div>
 
             <div class="skills-list">
-                <div v-for="skill in filteredSkills" :key="skill.name" class="skill-item">
+                <div
+                    v-for="skill in filteredSkills"
+                    :key="`${selectedCategory}::${skill.name}`"
+                    class="skill-item"
+                >
                     <div class="skill-info">
                         <fa-icon :icon="skill.icon" size="2x" class="skill-icon" />
                         <span class="skill-name">{{ skill.name }}</span>
                     </div>
                     <div class="progress-bar">
-                        <div class="progress" :style="{ width: skill.proficiency + '%' }"></div>
+                        <div
+                            class="progress"
+                            v-intersect="skill.name"
+                            :style="{
+                                width: intersected[skill.name] ? skill.proficiency + '%' : '0%',
+                            }"
+                        ></div>
                     </div>
                     <span class="percentage">{{ skill.proficiency }}%</span>
                 </div>
@@ -66,7 +100,6 @@ export default {
     flex-wrap: wrap;
     width: 100%;
     gap: 20px;
-    /* padding: 20px; */
     border: 1px solid #e3e3e3;
     border-radius: 15px;
     background: #fefcfc;
@@ -85,8 +118,6 @@ export default {
 }
 
 .nav-item {
-    /* display: grid; */
-    /* grid-template-columns: 40% 60%; */
     display: flex;
     align-items: center;
     gap: 10px;
