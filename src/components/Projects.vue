@@ -13,6 +13,7 @@ import axios from 'axios';
 import ProjectCard from './ProjectCard.vue';
 import SectionWrapper from './SectionWrapper.vue';
 import projectsData from '@/assets/data/projects.json';
+import githubCache from '@/assets/data/projects.generated.json';
 
 export default {
     data() {
@@ -26,24 +27,36 @@ export default {
     },
     async created() {
         try {
-            // Fetch data for each project from GitHub API
-            const projectsWithGithubData = await Promise.all(
-                projectsData.map(async (project) => {
-                    const githubRepo = await axios.get(
-                        `https://api.github.com/repos/cweihan01/${project.repoName}`
-                    );
-                    const updatedProject = {
-                        ...project, // Keep original custom project data
-                        repoDescription: githubRepo.data.description || 'No description available.',
-                        stargazersCount: githubRepo.data.stargazers_count,
-                        pushedAt: githubRepo.data.pushed_at,
-                        languagesUrl: githubRepo.data.languages_url,
-                        repoLink: githubRepo.data.html_url,
-                    };
-                    return updatedProject;
-                })
-            );
-            this.projects = projectsWithGithubData;
+            let githubRepos;
+            if (import.meta.env.DEV) {
+                // Use cached data in dev mode
+                githubRepos = githubCache;
+            } else {
+                // Fetch data for each project from GitHub API
+                githubRepos = await Promise.all(
+                    projectsData.map(async ({ repoName }) => {
+                        try {
+                            const { data } = await axios.get(
+                                `https://api.github.com/repos/cweihan01/${repoName}`
+                            );
+                            return data;
+                        } catch {
+                            return null;
+                        }
+                    })
+                );
+            }
+            this.projects = projectsData.map((project, i) => {
+                const gh = githubRepos[i] || {};
+                return {
+                    ...project, // Keep original custom project data
+                    repoDescription: gh.description || 'No description available.',
+                    stargazersCount: gh.stargazers_count,
+                    pushedAt: gh.pushed_at,
+                    languagesUrl: gh.languages_url,
+                    repoLink: gh.html_url,
+                };
+            });
         } catch (error) {
             console.error('Error fetching GitHub repository data:', error);
         }
