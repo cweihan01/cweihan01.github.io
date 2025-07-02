@@ -28,4 +28,4 @@ coverage
 *.sw?
 
 *.tsbuildinfo
-**.generated.json
+# **.generated.json
