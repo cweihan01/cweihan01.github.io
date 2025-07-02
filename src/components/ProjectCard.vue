@@ -33,8 +33,8 @@
             </div>
         </div>
 
-        <div class="languages" v-if="Object.keys(languages).length">
-            <div class="language-item" v-for="(percentage, lang) in languages" :key="lang">
+        <div class="languages" v-if="Object.keys(langPercentages).length">
+            <div class="language-item" v-for="(percentage, lang) in langPercentages" :key="lang">
                 <div class="language-grid">
                     <span class="language-name">{{ lang }}</span>
                     <div class="progress-bar">
@@ -48,30 +48,23 @@
 </template>
 
 <script>
-import axios from 'axios';
-
 export default {
     props: ['project'],
-    data() {
-        return {
-            languages: {},
-        };
+    mounted() {
+        console.log(this.project);
     },
-    async created() {
-        try {
-            if (this.project.languagesUrl) {
-                // console.log("Retrieving languages:" + this.project.languagesUrl);
-                const response = await axios.get(this.project.languagesUrl);
-                const total = Object.values(response.data).reduce((acc, val) => acc + val, 0);
-                this.languages = Object.fromEntries(
-                    Object.entries(response.data)
-                        .map(([lang, bytes]) => [lang, ((bytes / total) * 100).toFixed(1)])
-                        .slice(0, 4)
-                );
-            }
-        } catch (error) {
-            console.error('Error fetching languages:', error);
-        }
+    computed: {
+        /** Turn languages (in bytes) to top 4 percentages. */
+        langPercentages() {
+            const raw = this.project.languages || {};
+            const entries = Object.entries(raw);
+            const total = entries.reduce((sum, [, b]) => sum + b, 0);
+            return Object.fromEntries(
+                entries
+                    .map(([lang, bytes]) => [lang, ((bytes / total) * 100).toFixed(1)])
+                    .slice(0, 4)
+            );
+        },
     },
     methods: {
         formatDate(dateString) {

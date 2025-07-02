@@ -1,6 +1,6 @@
 import fs from 'fs/promises';
 import path from 'path';
-import axios from 'axios';
+import { fetchReposWithLanguages } from '../api/github.js';
 
 async function main() {
     // Load files
@@ -11,19 +11,11 @@ async function main() {
     const rawText = await fs.readFile(SRC, 'utf8');
     const rawProjects = JSON.parse(rawText);
 
-    console.log('Fetching projects from GitHub API');
-    const out = [];
+    console.log('Fetching projects and languages from GitHub API');
+    const fullRepoNames = rawProjects.map((p) => `cweihan01/${p.repoName}`);
+    const out = await fetchReposWithLanguages(fullRepoNames);
 
-    for (const { repoName } of rawProjects) {
-        try {
-            const res = await axios.get(`https://api.github.com/repos/cweihan01/${repoName}`);
-            out.push(res.data);
-        } catch (err) {
-            console.warn(`Failed ${repoName}: ${err.message}`);
-            out.push(null);
-        }
-    }
-
+    // Write API data to file
     await fs.writeFile(OUT, JSON.stringify(out, null, 2), 'utf8');
     console.log(`Wrote ${out.length} GitHub projects data to ${OUT}`);
 }
