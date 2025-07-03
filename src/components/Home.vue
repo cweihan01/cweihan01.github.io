@@ -1,5 +1,6 @@
 <template>
     <div class="home-page" id="home" ref="home">
+        <div class="scroll-catcher"></div>
         <div class="intro-overlay">
             <div class="intro-section">
                 <h1 class="name">{{ aboutInfo.firstName + ' ' + aboutInfo.lastName }}</h1>
@@ -43,9 +44,13 @@ export default {
         // p5 sketch
         initSketch(container) {
             new p5((s) => {
+                let isMobile;
+
                 // Create canvas and seed particles
                 s.setup = () => {
+                    isMobile = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
                     s.createCanvas(s.windowWidth, s.windowHeight).parent(container);
+
                     for (let i = 0; i < this.maxParticles; i++) {
                         this.particles.push(this.newParticle(s));
                     }
@@ -66,10 +71,12 @@ export default {
                         // for (let j = i + 1; j < this.particles.length; j++) {
                         //     p.lineTo(this.particles[j], s);
                         // }
-                        const d = s.dist(p.x, p.y, s.mouseX, s.mouseY);
-                        if (d < this.mouseLinkDist) {
-                            s.stroke(100, 200, 255, s.map(d, 0, this.mouseLinkDist, 200, 0));
-                            s.line(p.x, p.y, s.mouseX, s.mouseY);
+                        if (!isMobile) {
+                            const d = s.dist(p.x, p.y, s.mouseX, s.mouseY);
+                            if (d < this.mouseLinkDist) {
+                                s.stroke(100, 200, 255, s.map(d, 0, this.mouseLinkDist, 200, 0));
+                                s.line(p.x, p.y, s.mouseX, s.mouseY);
+                            }
                         }
                         p.display(s);
                         p.checkEdges(s);
@@ -146,12 +153,18 @@ export default {
     /* background: linear-gradient(135deg, #e3f2fd, #bbdefb); */
     text-align: center;
     cursor: grabbing;
+    overflow: hidden;
 }
 
-.home-page {
-    position: relative;
-    height: 100vh;
-    overflow: hidden;
+.scroll-catcher {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 5;
+    background: transparent;
+    touch-action: pan-y;
 }
 
 .intro-overlay {
