@@ -1,18 +1,20 @@
 <template>
-    <div class="home-page" id="home">
-        <div class="intro-section">
-            <h1 class="name">{{ aboutInfo.firstName + ' ' + aboutInfo.lastName }}</h1>
-            <p class="headline">{{ aboutInfo.headline }}</p>
-            <div class="icons-container">
-                <a :href="aboutInfo.linkedin" target="_blank" aria-label="LinkedIn">
-                    <fa-icon icon="fab fa-linkedin" size="3x" class="social-icons" />
-                </a>
-                <a :href="aboutInfo.github" target="_blank" aria-label="GitHub">
-                    <fa-icon icon="fab fa-github" size="3x" class="social-icons" />
-                </a>
-                <a :href="aboutInfo.email" target="_blank" aria-label="Email">
-                    <fa-icon icon="fas fa-envelope" size="3x" class="social-icons" />
-                </a>
+    <div class="home-page" id="home" ref="home">
+        <div class="intro-overlay">
+            <div class="intro-section">
+                <h1 class="name">{{ aboutInfo.firstName + ' ' + aboutInfo.lastName }}</h1>
+                <p class="headline">{{ aboutInfo.headline }}</p>
+                <div class="icons-container">
+                    <a :href="aboutInfo.linkedin" target="_blank" aria-label="LinkedIn">
+                        <fa-icon icon="fab fa-linkedin" size="3x" class="social-icons" />
+                    </a>
+                    <a :href="aboutInfo.github" target="_blank" aria-label="GitHub">
+                        <fa-icon icon="fab fa-github" size="3x" class="social-icons" />
+                    </a>
+                    <a :href="aboutInfo.email" target="_blank" aria-label="Email">
+                        <fa-icon icon="fas fa-envelope" size="3x" class="social-icons" />
+                    </a>
+                </div>
             </div>
         </div>
         <button @click="scrollToBody" class="scroll-button">
@@ -22,17 +24,113 @@
 </template>
 
 <script>
+import p5 from 'p5';
 import aboutInfo from '@/assets/data/about.json';
+
 export default {
     data() {
         return {
             aboutInfo,
+            particles: [],
+            maxParticles: 50,
+            mouseLinkDist: 100,
         };
     },
     methods: {
         scrollToBody() {
             document.getElementById('about').scrollIntoView({ behavior: 'smooth' });
         },
+        // p5 sketch
+        initSketch(container) {
+            new p5((s) => {
+                // Create canvas and seed particles
+                s.setup = () => {
+                    s.createCanvas(s.windowWidth, s.windowHeight).parent(container);
+                    for (let i = 0; i < this.maxParticles; i++) {
+                        this.particles.push(this.newParticle(s));
+                    }
+                };
+                s.draw = () => {
+                    const ctx = s.drawingContext;
+                    const topColor = '#a8c0d8';
+                    const bottomColor = '#f2f2f2';
+                    const grad = ctx.createLinearGradient(0, 0, 0, s.height);
+                    grad.addColorStop(0, topColor);
+                    grad.addColorStop(1, bottomColor);
+                    ctx.fillStyle = grad;
+                    ctx.fillRect(0, 0, s.width, s.height);
+
+                    this.particles.forEach((p, i) => {
+                        p.move();
+                        // Draw lines between close particles
+                        // for (let j = i + 1; j < this.particles.length; j++) {
+                        //     p.lineTo(this.particles[j], s);
+                        // }
+                        const d = s.dist(p.x, p.y, s.mouseX, s.mouseY);
+                        if (d < this.mouseLinkDist) {
+                            s.stroke(100, 200, 255, s.map(d, 0, this.mouseLinkDist, 200, 0));
+                            s.line(p.x, p.y, s.mouseX, s.mouseY);
+                        }
+                        p.display(s);
+                        p.checkEdges(s);
+                    });
+                };
+                s.windowResized = () => {
+                    s.resizeCanvas(s.windowWidth, s.windowHeight);
+                };
+                s.mouseClicked = () => {
+                    if (this.particles.length < 70) {
+                        this.particles.push(this.newParticle(s, s.mouseX, s.mouseY));
+                    }
+                };
+            });
+        },
+        // Factory for a single particle
+        newParticle(s, x = s.random(s.width), y = s.random(s.height)) {
+            return {
+                x,
+                y,
+                diameter: s.random(10, 15),
+                speedX: s.random(-1.5, 1.5),
+                speedY: s.random(-1.5, 1.5),
+                angle: s.random(0, s.TWO_PI),
+                rotSpeed: s.random(0.005, 0.03),
+                opacity: s.random(180, 255),
+                move() {
+                    this.x += this.speedX;
+                    this.y += this.speedY;
+                },
+                display(s) {
+                    const d =
+                        (s.sin(this.angle + s.PI / 2) * this.diameter) / 2 + this.diameter / 2;
+                    s.noStroke();
+                    s.fill(255, 255, 255, this.opacity);
+                    s.ellipse(this.x, this.y, d);
+                    this.angle += this.rotSpeed;
+                },
+                lineTo(other, s) {
+                    const distToMouse = s.dist(this.x, this.y, s.mouseX, s.mouseY);
+                    const distToParticle = s.dist(this.x, this.y, other.x, other.y);
+                    if (distToMouse < 127) {
+                        s.stroke(0, 0, 255, 255 - 2 * distToMouse);
+                        s.line(this.x, this.y, s.mouseX, s.mouseY);
+                    }
+                    if (distToParticle < 127) {
+                        s.stroke(0, 0, 255, 255 - 2 * distToParticle);
+                        s.line(this.x, this.y, other.x, other.y);
+                    }
+                },
+                checkEdges(s) {
+                    if (this.x > s.width + this.diameter) this.x = -this.diameter;
+                    if (this.x < -this.diameter) this.x = s.width + this.diameter;
+                    if (this.y > s.height + this.diameter) this.y = -this.diameter;
+                    if (this.y < -this.diameter) this.y = s.height + this.diameter;
+                },
+            };
+        },
+    },
+    mounted() {
+        this.initSketch(this.$refs.home);
     },
 };
 </script>
@@ -45,14 +143,48 @@ export default {
     justify-content: center;
     align-items: center;
     position: relative;
-    background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+    /* background: linear-gradient(135deg, #e3f2fd, #bbdefb); */
     text-align: center;
-    color: #333;
+    cursor: grabbing;
+}
+
+.home-page {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.intro-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    pointer-events: none;
 }
 
 .intro-section {
     width: 80%;
     padding: 20px;
+    pointer-events: auto;
+}
+
+.scroll-button {
+    position: absolute;
+    bottom: 50px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    pointer-events: auto;
+    transition: transform 0.3s ease;
+}
+.scroll-button:hover {
+    transform: translateY(-12px);
 }
 
 .name {
@@ -60,6 +192,7 @@ export default {
     font-weight: bold;
     margin-bottom: 20px;
     line-height: 90px;
+    color: #333;
 }
 
 .headline {
