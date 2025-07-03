@@ -153,7 +153,7 @@ export default {
     /* background: linear-gradient(135deg, #e3f2fd, #bbdefb); */
     text-align: center;
     cursor: grabbing;
-    overflow: hidden;
+    overflow-x: hidden;
 }
 
 .scroll-catcher {
@@ -195,6 +195,7 @@ export default {
     cursor: pointer;
     pointer-events: auto;
     transition: transform 0.3s ease;
+    z-index: 10;
 }
 .scroll-button:hover {
     transform: translateY(-12px);
