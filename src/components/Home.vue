@@ -224,6 +224,7 @@ export default {
 
 .icons-container a {
     border-radius: 4px;
+    z-index: 10;
 }
 
 .icons-container a:hover {
