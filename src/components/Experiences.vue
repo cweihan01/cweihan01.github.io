@@ -19,9 +19,10 @@ export default {
         <div class="timeline">
             <div class="entry" v-for="(experience, idx) in experiences" :key="idx">
                 <div class="title">
-                    <p class="date">{{ experience.startDate }} - {{ experience.endDate }}</p>
+                    <p class="date">{{ experience.startDate }} — {{ experience.endDate }}</p>
                     <p class="position">{{ experience.title }}</p>
-                    <p class="company">{{ experience.company }}, {{ experience.location }}</p>
+                    <p class="company">{{ experience.company }}</p>
+                    <p class="location">{{ experience.location }}</p>
                 </div>
                 <div class="body">
                     <p>{{ experience.description }}</p>
@@ -106,7 +107,7 @@ export default {
 
 .date {
     font-size: 1em;
-    color: #666;
+    color: #555;
 }
 
 .position {
@@ -116,8 +117,14 @@ export default {
 }
 
 .company {
+    font-size: 0.95em;
+    color: #4b4b4b;
+}
+
+.location {
     font-size: 0.9em;
-    color: #666;
+    color: #5e5e5e;
+    font-style: italic;
 }
 
 .body {
