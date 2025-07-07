@@ -1,13 +1,26 @@
 [
     {
-        "title": "Undergraduate Researcher",
-        "company": "Sensors and Robotics for Infrastructure Lab",
-        "location": "UCLA",
-        "startDate": "Dec 2024",
+        "title": "Software Engineer Intern",
+        "company": "Commure",
+        "location": "Mountain View, CA",
+        "startDate": "Jun 2025",
         "endDate": "Present",
         "description": "",
         "points": [
-            "Integrate Livox & ZED SDKs, ROS 2, and YOLOv8 to enable object detection and localization for an autonomous robot."
+            "Enhancing user interfaces for an Electronic Health Record (EHR) platform using React and TypeScript.",
+            "Designing and testing backend APIs with FastAPI to support clinical functionality and data flow."
+        ]
+    },
+    {
+        "title": "Software Engineer Intern",
+        "company": "Code for the Community",
+        "location": "San Francisco, CA",
+        "startDate": "May 2025",
+        "endDate": "Present",
+        "description": "",
+        "points": [
+            "Helping to build a mobile app for the Middle East Children's Alliance (MECA) to share stories, events, and fundraising efforts with their global community.",
+            "Building backend services with AWS Lambda, API Gateway, and SNS to support dynamic content and push notifications."
         ]
     },
     {
@@ -15,34 +28,25 @@
         "company": "Orsulic Lab",
         "location": "UCLA",
         "startDate": "Sep 2024",
-        "endDate": "Present",
+        "endDate": "Jun 2025",
         "description": "",
         "points": [
-            "Architect and implement a PostgreSQL database on AWS, centralizing 50k+ records.",
-            "Develop interactive visualizations using Django REST API, Plotly, and React for seamless querying and real-time updates."
+            "Architected and deployed a PostgreSQL database on AWS, centralizing 100k+ records.",
+            "Developed a real-time query platform with dynamic visualizations using Django REST framework, React, and Plotly.",
+            "Optimized performance with Redis caching, achieving over 100x faster query speeds.",
+            "Provisioned an AWS EC2 instance and configured Nginx as a reverse proxy with DNS and SSL for secure web access."
         ]
     },
     {
-        "title": "Frontend Developer",
-        "company": "Association for Computing Machinery (ACM)",
+        "title": "Robotics Research Assistant",
+        "company": "Sensing and Robotics for Infrastructure Lab",
         "location": "UCLA",
-        "startDate": "Apr 2024",
-        "endDate": "Present",
+        "startDate": "Dec 2024",
+        "endDate": "May 2025",
         "description": "",
         "points": [
-            "Enhance ACM at UCLA's website, built with Next.js, which was recognized with ACM HQ's Outstanding Website Award among 680 chapters.",
-            "Responsible for integrating the new ACM Cloud committee and launching partnership and alumni pages."
-        ]
-    },
-    {
-        "title": "Data Consultant",
-        "company": "Data Resolutions",
-        "location": "UCLA",
-        "startDate": "Sep 2024",
-        "endDate": "Present",
-        "description": "",
-        "points": [
-            "Collaborate with external clients to derive actionable insights from data, enhancing decision-making through analytical solutions."
+            "Supported integration of a Python-C++ ROS 2 interface to fuse LiDAR and stereo camera data, enhancing perception pipelines.",
+            "Integrated YOLOX SDKs and sensor fusion for real-time object detection and occlusion-aware tracking."
         ]
     },
     {
@@ -53,7 +57,30 @@
         "endDate": "Present",
         "description": "",
         "points": [
-            "Lead biweekly peer learning sessions for PIC 10B (Intermediate Programming with C++), facilitating discussions and helping peers develop programming skills in a collaborative environment."
+            "Lead biweekly peer learning sessions for PIC 10B & PIC 10C (Intermediate & Advanced Programming with C++), facilitating discussions and helping peers develop programming skills in a collaborative environment."
+        ]
+    },
+    {
+        "title": "Data Consultant",
+        "company": "Data Resolutions",
+        "location": "UCLA",
+        "startDate": "Sep 2024",
+        "endDate": "Present",
+        "description": "",
+        "points": [
+            "Collaborate with external clients to derive actionable insights from data and strengthen data processing pipelines."
+        ]
+    },
+    {
+        "title": "Frontend Developer",
+        "company": "Association for Computing Machinery (ACM)",
+        "location": "UCLA",
+        "startDate": "Apr 2024",
+        "endDate": "Apr 2025",
+        "description": "",
+        "points": [
+            "Enhance ACM at UCLA's website, built with Next.js, which was recognized with ACM HQ's Outstanding Website Award among 680 chapters.",
+            "Responsible for integrating the new ACM Cloud committee and launching partnership and alumni pages."
         ]
     },
     {
@@ -69,10 +96,10 @@
         ]
     },
     {
-        "title": "DevSecOps Engineering Intern",
+        "title": "DevSecOps Engineer Intern",
         "company": "DSTA",
         "location": "Singapore",
-        "startDate": "Aug 2023",
+        "startDate": "Jul 2023",
         "endDate": "Sep 2023",
         "description": "",
         "points": [
@@ -82,14 +109,16 @@
         ]
     },
     {
-        "title": "Software Engineering Intern",
+        "title": "Software Engineer Intern",
         "company": "HTX",
         "location": "Singapore",
         "startDate": "Jan 2023",
         "endDate": "May 2023",
         "description": "",
         "points": [
-            "Developed a bot for automated social media monitoring, incorporating topic modeling and a web dashboard for historical analysis."
+            "Developed a Python Telegram bot to automate social media monitoring and issue threat alerts.",
+            "Initiated a topic modeling pipeline to detect emerging trends from data streams.",
+            "Created a web dashboard with React, MongoDB, and Flask for historical analysis."
         ]
     }
 ]
