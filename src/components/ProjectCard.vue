@@ -151,16 +151,17 @@ export default {
 
 .techs-container {
     margin-top: 12px;
-    display: flex;
+    display: flex !important;
     flex-wrap: wrap;
-    gap: 6px;
+    gap: 6px !important;
 }
 .tech-badge {
     background: #f9f9f9;
+    color: #333;
     padding: 4px 8px;
     border-radius: 4px;
     font-size: 0.85em;
-    border: 1px solid #ccc;
+    border: 1px solid #777777;
 }
 
 .languages-container {
@@ -274,13 +275,13 @@ export default {
 
     /* Hide desktop overlays */
     .desktop-only {
-        display: none;
+        display: none !important;
     }
 
     /* Show mobile overlays at bottom */
     .mobile-only {
         display: block;
-        margin-top: 20px;
+        margin: 10px 0;
     }
 }
 </style>
