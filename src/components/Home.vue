@@ -83,7 +83,7 @@ export default {
                     });
                 };
                 s.windowResized = () => {
-                    s.resizeCanvas(s.windowWidth, s.windowHeight);
+                    s.resizeCanvas(window.innerWidth, window.innerHeight);
                 };
                 s.mouseClicked = () => {
                     if (this.particles.length < 70) {
@@ -144,7 +144,7 @@ export default {
 
 <style scoped>
 .home-page {
-    height: 100vh;
+    height: 100dvh;
     display: flex;
     flex-direction: column;
     justify-content: center;
