@@ -172,6 +172,18 @@ export default {
     overflow-y: hidden;
 }
 
+/* Fade to next section */
+.home-page::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 100px;
+    pointer-events: none;
+    background: linear-gradient(to bottom, rgba(168, 192, 216, 0) 0%, #f2f2f2 100%);
+}
+
 .scroll-catcher {
     position: absolute;
     top: 0;
