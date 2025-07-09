@@ -83,7 +83,7 @@ export default {
                     });
                 };
                 s.windowResized = () => {
-                    s.resizeCanvas(window.innerWidth, window.innerHeight);
+                    s.resizeCanvas(window.innerWidth, window.innerHeight * 1.2);
                 };
                 s.mouseClicked = () => {
                     if (this.particles.length < 70) {
