@@ -45,11 +45,15 @@ export default {
         initSketch(container) {
             new p5((s) => {
                 let isMobile;
+                let lastW, lastH;
+                const resizeThreshold = 100;
 
                 // Create canvas and seed particles
                 s.setup = () => {
                     isMobile = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-                    s.createCanvas(window.innerWidth, window.innerHeight * 1.2).parent(container);
+                    lastW = window.innerWidth;
+                    lastH = window.innerHeight;
+                    s.createCanvas(lastW * 1.2, lastH * 1.2).parent(container);
 
                     for (let i = 0; i < this.maxParticles; i++) {
                         this.particles.push(this.newParticle(s));
@@ -83,7 +87,18 @@ export default {
                     });
                 };
                 s.windowResized = () => {
-                    s.resizeCanvas(window.innerWidth, window.innerHeight * 1.2);
+                    // s.resizeCanvas(window.innerWidth, window.innerHeight * 1.2);
+                    const w = window.innerWidth;
+                    const h = window.innerHeight;
+                    // If either dimension changed by more than threshold, resize
+                    if (
+                        Math.abs(w - lastW) > resizeThreshold ||
+                        Math.abs(h - lastH) > resizeThreshold
+                    ) {
+                        lastW = w;
+                        lastH = h;
+                        s.resizeCanvas(w * 1.2, h * 1.2);
+                    }
                 };
                 s.mouseClicked = () => {
                     if (this.particles.length < 70) {
