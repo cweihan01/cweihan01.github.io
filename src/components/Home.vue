@@ -49,7 +49,7 @@ export default {
                 // Create canvas and seed particles
                 s.setup = () => {
                     isMobile = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-                    s.createCanvas(window.innerWidth, window.innerHeight).parent(container);
+                    s.createCanvas(window.innerWidth, window.innerHeight * 1.2).parent(container);
 
                     for (let i = 0; i < this.maxParticles; i++) {
                         this.particles.push(this.newParticle(s));
@@ -154,6 +154,7 @@ export default {
     text-align: center;
     cursor: grabbing;
     overflow-x: hidden;
+    overflow-y: hidden;
 }
 
 .scroll-catcher {
