@@ -49,7 +49,7 @@ export default {
                 // Create canvas and seed particles
                 s.setup = () => {
                     isMobile = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-                    s.createCanvas(s.windowWidth, s.windowHeight).parent(container);
+                    s.createCanvas(window.innerWidth, window.innerHeight).parent(container);
 
                     for (let i = 0; i < this.maxParticles; i++) {
                         this.particles.push(this.newParticle(s));
@@ -144,7 +144,7 @@ export default {
 
 <style scoped>
 .home-page {
-    height: 100dvh;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
