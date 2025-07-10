@@ -34,3 +34,20 @@ export async function fetchRepoWithLanguages(fullName) {
 export function fetchReposWithLanguages(fullNames) {
     return Promise.all(fullNames.map(fetchRepoWithLanguages));
 }
+
+/**
+ * Fetch the latest commits from a GitHub repo.
+ *
+ * @param {string} fullName   e.g. "username/reponame"
+ * @param {number} [limit=10]     max commits to return
+ * @returns {Promise<object[]>}   array of commit objects (or empty on error)
+ */
+export async function fetchLatestCommits(fullName, limit = 10) {
+    try {
+        const { data } = await axios.get(`https://api.github.com/repos/${fullName}/commits`);
+        return data.slice(0, limit);
+    } catch (err) {
+        console.warn(`fetchLatestCommits error: ${err.message}`);
+        return [];
+    }
+}

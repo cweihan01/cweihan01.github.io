@@ -37,9 +37,7 @@
 
                 <!-- Source code link -->
                 <p class="footer-text text-sm">
-                    <a :href="aboutInfo.sourceCode" target="_blank">
-                        Source Code
-                    </a>
+                    <a :href="aboutInfo.sourceCode" target="_blank"> Source Code </a>
                 </p>
 
                 <!-- Last updated datetime and latest updates -->
@@ -90,8 +88,8 @@
 
 <script>
 import aboutInfo from '@/assets/data/about.json';
-import axios from 'axios';
 import SectionWrapper from './SectionWrapper.vue';
+import { fetchLatestCommits } from '@/api/github';
 
 export default {
     data() {
@@ -112,21 +110,11 @@ export default {
             }
         },
     },
-    created() {
+    async created() {
         // Fetch the 10 most recent commits once component created
-        this.fetchCommits();
+        this.commits = await fetchLatestCommits(this.aboutInfo.repoPath, 10);
     },
     methods: {
-        async fetchCommits() {
-            try {
-                const response = await axios.get(
-                    `https://api.github.com/repos/${aboutInfo.repoPath}/commits`
-                );
-                this.commits = response.data.slice(0, 10);
-            } catch (error) {
-                console.error('Error fetching commits:', error);
-            }
-        },
         toggleCommits() {
             this.showCommits = !this.showCommits;
         },
