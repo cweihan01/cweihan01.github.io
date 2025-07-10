@@ -1,5 +1,5 @@
 <template>
-    <div class="card">
+    <div :class="['card', { 'card-visible': visible }]">
         <div :class="['card-inner', { reverse: index % 2 === 1 }]">
             <!-- Image side: contains image, technologies, languages -->
             <div class="image-container">
@@ -85,6 +85,11 @@
 <script>
 export default {
     props: ['project', 'index'],
+    data() {
+        return {
+            visible: false,
+        };
+    },
     computed: {
         /** Turn languages (in bytes) to percentages (only keep top 4). */
         langPercentages() {
@@ -108,6 +113,18 @@ export default {
             }).format(date);
         },
     },
+    mounted() {
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    this.visible = true;
+                    observer.disconnect();
+                }
+            },
+            { threshold: 0.1 }
+        );
+        observer.observe(this.$el);
+    },
 };
 </script>
 
@@ -118,11 +135,17 @@ export default {
     border-radius: 15px;
     box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
     width: 100%;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    opacity: 0;
+    transform: translateY(25px);
+    transition: opacity 0.5s ease, transform 0.5s ease, box-shadow 0.5s ease;
 }
 .card:hover {
     transform: translateY(-5px);
     box-shadow: 0px 12px 24px rgba(0, 0, 0, 0.2);
+}
+.card-visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .card-inner {
