@@ -29,6 +29,9 @@ import p5 from 'p5';
 import aboutInfo from '@/assets/data/about.json';
 
 export default {
+    beforeCreate() {
+        p5.disableFriendlyErrors = true;
+    },
     data() {
         return {
             aboutInfo,
