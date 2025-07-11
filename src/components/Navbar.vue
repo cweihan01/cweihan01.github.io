@@ -104,7 +104,11 @@ onUnmounted(() => {
     position: fixed;
     top: 0;
     width: 100%;
-    background-color: rgba(255, 255, 255, 0.9);
+    background: linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.95) 0%,
+        rgba(245, 245, 245, 0.7) 100%
+    );
     z-index: 1000;
     transform-origin: top center;
     transition: transform 1s ease, opacity 1s ease;
