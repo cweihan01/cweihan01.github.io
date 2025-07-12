@@ -24,7 +24,11 @@
                     >
                         <span class="language-name">{{ lang }}</span>
                         <div class="progress-bar">
-                            <div class="progress" :style="{ width: percentage + '%' }"></div>
+                            <div
+                                class="progress"
+                                v-intersect="lang"
+                                :style="{ width: intersected[lang] ? percentage + '%' : '0%' }"
+                            ></div>
                         </div>
                         <span class="percentage">{{ percentage }}%</span>
                     </div>
@@ -72,7 +76,11 @@
                     >
                         <span class="language-name">{{ lang }}</span>
                         <div class="progress-bar">
-                            <div class="progress" :style="{ width: percentage + '%' }"></div>
+                            <div
+                                class="progress"
+                                v-intersect="lang"
+                                :style="{ width: intersected[lang] ? percentage + '%' : '0%' }"
+                            ></div>
                         </div>
                         <span class="percentage">{{ percentage }}%</span>
                     </div>
@@ -88,6 +96,7 @@ export default {
     data() {
         return {
             visible: false,
+            intersected: {},
         };
     },
     computed: {
@@ -111,6 +120,22 @@ export default {
                 month: 'long',
                 year: 'numeric',
             }).format(date);
+        },
+    },
+    directives: {
+        intersect: {
+            mounted(el, { instance, value }) {
+                const obs = new IntersectionObserver(
+                    ([entry]) => {
+                        if (entry.isIntersecting) {
+                            instance.intersected[value] = true;
+                            obs.unobserve(el);
+                        }
+                    },
+                    { threshold: 0.3 }
+                );
+                obs.observe(el);
+            },
         },
     },
     mounted() {
