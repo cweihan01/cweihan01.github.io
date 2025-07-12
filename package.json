@@ -4,7 +4,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "node src/scripts/github.js && vite",
+    "develop": "node src/scripts/github.js && vite",
+    "dev": "vite",
     "build": "vite build",
     "preview": "vite preview"
   },

@@ -18,7 +18,7 @@
                 </div>
             </div>
         </div>
-        <button @click="scrollToBody" class="scroll-button">
+        <button @click="scrollToBody" :class="['scroll-button', { bounce }]">
             <fa-icon icon="fas fa-angles-down" size="2x" />
         </button>
     </div>
@@ -38,10 +38,18 @@ export default {
             particles: [],
             maxParticles: 50,
             mouseLinkDist: 100,
+            // Track scroll down button state
+            hasClicked: false,
+            bounce: false,
         };
     },
     methods: {
         scrollToBody() {
+            if (!this.hasClicked) {
+                this.hasClicked = true;
+                clearTimeout(this.bounceTimer);
+                this.bounce = false;
+            }
             document.getElementById('about').scrollIntoView({ behavior: 'smooth' });
         },
         // p5 sketch
@@ -156,6 +164,14 @@ export default {
     },
     mounted() {
         this.initSketch(this.$refs.home);
+
+        // After 7s, if user still hasn't clicked, start bouncing
+        this.bounceTimer = setTimeout(() => {
+            if (!this.hasClicked) this.bounce = true;
+        }, 2000);
+    },
+    beforeUnmount() {
+        clearTimeout(this.bounceTimer);
     },
 };
 </script>
@@ -216,6 +232,20 @@ export default {
     width: 80%;
     padding: 20px;
     pointer-events: auto;
+}
+
+@keyframes scrollBounce {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-30px);
+    }
+}
+
+.scroll-button.bounce {
+    animation: scrollBounce 0.6s ease-out 3; /* 3 bounces */
 }
 
 .scroll-button {
