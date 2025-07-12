@@ -168,7 +168,7 @@ export default {
         // After 7s, if user still hasn't clicked, start bouncing
         this.bounceTimer = setTimeout(() => {
             if (!this.hasClicked) this.bounce = true;
-        }, 2000);
+        }, 7000);
     },
     beforeUnmount() {
         clearTimeout(this.bounceTimer);
@@ -234,20 +234,6 @@ export default {
     pointer-events: auto;
 }
 
-@keyframes scrollBounce {
-    0%,
-    100% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-30px);
-    }
-}
-
-.scroll-button.bounce {
-    animation: scrollBounce 0.6s ease-out 3; /* 3 bounces */
-}
-
 .scroll-button {
     position: absolute;
     bottom: 50px;
@@ -260,6 +246,20 @@ export default {
 }
 .scroll-button:hover {
     transform: translateY(-12px);
+}
+
+@keyframes scrollBounce {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-30px);
+    }
+}
+
+.scroll-button.bounce {
+    animation: scrollBounce 0.6s ease-out 3; /* 3 bounces */
 }
 
 .name {
