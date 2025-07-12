@@ -6,7 +6,7 @@
                 <img :src="project.image" alt="Project Image" class="project-image" />
 
                 <!-- Tech badges (desktop) -->
-                <div class="techs-container desktop-only">
+                <div v-if="!isMobile" class="techs-container">
                     <span v-for="(tech, i) in project.technologies" :key="i" class="tech-badge">
                         {{ tech }}
                     </span>
@@ -14,8 +14,8 @@
 
                 <!-- Languages progress bars (desktop) -->
                 <div
-                    class="languages-container desktop-only"
-                    v-if="Object.keys(langPercentages).length"
+                    class="languages-container"
+                    v-if="!isMobile && Object.keys(langPercentages).length"
                 >
                     <div
                         class="language-item"
@@ -59,15 +59,15 @@
                 </div>
 
                 <!-- Bottom of card on mobile, hidden on desktop -->
-                <div class="techs-container mobile-only">
+                <div v-if="isMobile" class="techs-container">
                     <span v-for="(tech, i) in project.technologies" :key="i" class="tech-badge">
                         {{ tech }}
                     </span>
                 </div>
 
                 <div
-                    class="languages-container mobile-only"
-                    v-if="Object.keys(langPercentages).length"
+                    class="languages-container"
+                    v-if="isMobile && Object.keys(langPercentages).length"
                 >
                     <div
                         class="language-item"
@@ -97,6 +97,7 @@ export default {
         return {
             visible: false,
             intersected: {},
+            isMobile: window.innerWidth < 768,
         };
     },
     computed: {
@@ -121,6 +122,10 @@ export default {
                 year: 'numeric',
             }).format(date);
         },
+
+        onResize() {
+            this.isMobile = window.innerWidth < 768;
+        },
     },
     directives: {
         intersect: {
@@ -139,6 +144,8 @@ export default {
         },
     },
     mounted() {
+        window.addEventListener('resize', this.onResize);
+
         const observer = new IntersectionObserver(
             ([entry]) => {
                 if (entry.isIntersecting) {
@@ -149,6 +156,9 @@ export default {
             { threshold: 0.1 }
         );
         observer.observe(this.$el);
+    },
+    beforeUnmount() {
+        window.removeEventListener('resize', this.onResize);
     },
 };
 </script>
@@ -294,10 +304,6 @@ export default {
     margin-right: 3px;
 }
 
-.mobile-only {
-    display: none;
-}
-
 @media (max-width: 768px) {
     /* Restrict image height smaller on mobile */
     .image-container {
@@ -319,17 +325,6 @@ export default {
     }
     .text-container {
         flex: 1 1 100%;
-    }
-
-    /* Hide desktop overlays */
-    .desktop-only {
-        display: none !important;
-    }
-
-    /* Show mobile overlays at bottom */
-    .mobile-only {
-        display: block;
-        margin: 10px 0;
     }
 }
 </style>
