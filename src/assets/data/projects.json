@@ -30,8 +30,8 @@
     {
         "displayName": "Personal Website",
         "repoName": "cweihan01.github.io",
-        "caption": "My Journey in Software Development",
-        "displayDescription": "This website highlights my experiences, projects, and continuous growth as I explore new opportunities and build new things.",
+        "caption": "My Portfolio & Learning Space",
+        "displayDescription": "I created this site to document my projects and experiences while exploring Vue and front-end development. Having primarily worked with React, this project provides an opportunity to discover new ways of building with Vue. The site is very much a work in progress, and I see it as a space to experiment freely, learn through building, and continuously improve. Thanks for stopping by!",
         "image": "website.png",
         "links": [],
         "technologies": ["Vue.js", "GitHub API"]
