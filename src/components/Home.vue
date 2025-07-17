@@ -1,5 +1,6 @@
 <template>
     <div class="home-page" id="home" ref="home">
+        <div class="custom-cursor" ref="cursor"></div>
         <div class="scroll-catcher"></div>
         <div class="intro-overlay">
             <div class="intro-section">
@@ -30,7 +31,7 @@ import aboutInfo from '@/assets/data/about.json';
 
 export default {
     beforeCreate() {
-        p5.disableFriendlyErrors = true;
+        p5.disableFriendlyErrors = true; // disable console output from p5.js
     },
     data() {
         return {
@@ -38,9 +39,8 @@ export default {
             particles: [],
             maxParticles: 50,
             mouseLinkDist: 100,
-            // Track scroll down button state
-            hasClicked: false,
-            bounce: false,
+            hasClicked: false, // whether scroll down button has been clicked
+            bounce: false, // whether scroll down button has bounced yet
         };
     },
     methods: {
@@ -163,9 +163,31 @@ export default {
         },
     },
     mounted() {
+        // Initialize background canvas
         this.initSketch(this.$refs.home);
 
-        // After 7s, if user still hasn't clicked, start bouncing
+        const container = this.$refs.home;
+        const cursor = this.$refs.cursor;
+
+        // Only display custom cursor within home page
+        const onMove = (e) => {
+            cursor.style.top = e.clientY + 'px';
+            cursor.style.left = e.clientX + 'px';
+        };
+        const onEnter = () => {
+            container.style.cursor = 'none';
+            cursor.style.display = 'block';
+            window.addEventListener('mousemove', onMove);
+        };
+        const onLeave = () => {
+            container.style.cursor = '';
+            cursor.style.display = 'none';
+            window.removeEventListener('mousemove', onMove);
+        };
+        container.addEventListener('mouseenter', onEnter);
+        container.addEventListener('mouseleave', onLeave);
+
+        // After 7s, if user still hasn't clicked, start bouncing the scroll down button
         this.bounceTimer = setTimeout(() => {
             if (!this.hasClicked) this.bounce = true;
         }, 7000);
@@ -186,9 +208,7 @@ export default {
     position: relative;
     /* background: linear-gradient(135deg, #e3f2fd, #bbdefb); */
     text-align: center;
-    cursor: grabbing;
-    overflow-x: hidden;
-    overflow-y: hidden;
+    overflow: hidden;
 }
 
 /* Fade to next section */
@@ -203,6 +223,26 @@ export default {
     background: linear-gradient(to bottom, rgba(168, 192, 216, 0) 0%, #f2f2f2 100%);
 }
 
+/* Disable default cursor on all elements on home page */
+.home-page * {
+    cursor: none !important;
+}
+
+/* Circular cursor on home page */
+.custom-cursor {
+    position: fixed;
+    width: 16px;
+    height: 16px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    pointer-events: none;
+    background: #fff;
+    transform: translate(-50%, -50%);
+    transition: background 0.2s ease;
+    z-index: 999;
+}
+
+/* On touchscreen, prevent scrolls from interacting with background */
 .scroll-catcher {
     position: absolute;
     top: 0;
@@ -313,5 +353,12 @@ export default {
 
 .scroll-button:hover {
     transform: translateY(-12px);
+}
+
+/* Disable custom cursor on touch-only devices */
+@media (hover: none) {
+    .custom-cursor {
+        display: none !important;
+    }
 }
 </style>
