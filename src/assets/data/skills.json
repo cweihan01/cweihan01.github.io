@@ -8,10 +8,11 @@
         { "name": "general", "label": "Tools", "icon": "fas fa-gear" }
     ],
     "skills": [
-        { "name": "JavaScript", "icon": "fab fa-js", "category": "language", "proficiency": 85 },
         { "name": "Python", "icon": "fab fa-python", "category": "language", "proficiency": 90 },
+        { "name": "JavaScript", "icon": "fab fa-js", "category": "language", "proficiency": 85 },
+        { "name": "TypeScript", "icon": "fas fa-t", "category": "language", "proficiency": 80 },
         { "name": "C++", "icon": "fas fa-c", "category": "language", "proficiency": 80 },
-        { "name": "C", "icon": "fas fa-c", "category": "language", "proficiency": 60 },
+        { "name": "C", "icon": "fas fa-c", "category": "language", "proficiency": 70 },
         { "name": "HTML", "icon": "fab fa-html5", "category": "language", "proficiency": 85 },
         { "name": "CSS", "icon": "fab fa-css3", "category": "language", "proficiency": 80 },
         { "name": "SQL", "icon": "fas fa-table-list", "category": "language", "proficiency": 75 },
@@ -21,6 +22,7 @@
         { "name": "Next.js", "icon": "fas fa-n", "category": "frontend", "proficiency": 80 },
         { "name": "Vue.js", "icon": "fab fa-vuejs", "category": "frontend", "proficiency": 70 },
 
+        { "name": "FastAPI", "icon": "fas fa-bolt", "category": "backend", "proficiency": 90 },
         { "name": "Django", "icon": "fas fa-d", "category": "backend", "proficiency": 90 },
         { "name": "Flask", "icon": "fas fa-pepper-hot", "category": "backend", "proficiency": 80 },
         { "name": "PostgreSQL", "icon": "fas fa-table", "category": "backend", "proficiency": 85 },
