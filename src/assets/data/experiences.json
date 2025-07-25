@@ -7,8 +7,8 @@
         "endDate": "Present",
         "description": "",
         "points": [
-            "Enhancing user interfaces for an Electronic Health Record (EHR) platform using React and TypeScript.",
-            "Designing and testing backend APIs with FastAPI to support clinical functionality and data flow."
+            "Improving an Electronic Health Record (EHR) platform using React, TypeScript, and TanStack Query to streamline clinical workflows and ease provider workloads.",
+            "Designing and testing FastAPI endpoints to support clinical features and efficient data access."
         ]
     },
     {
@@ -19,8 +19,8 @@
         "endDate": "Present",
         "description": "",
         "points": [
-            "Helping to build a mobile app for the Middle East Children's Alliance (MECA) to share stories, events, and fundraising efforts with their global community.",
-            "Building backend services with AWS Lambda, API Gateway, and SNS to support dynamic content and push notifications."
+            "Building a mobile app for the Middle East Children's Alliance (MECA) to share stories, events, and fundraising efforts with their global community.",
+            "Developing backend services with AWS Lambda, API Gateway, and SNS, integrating REST and GraphQL APIs to deliver dynamic content and push notifications."
         ]
     },
     {
