@@ -1,5 +1,19 @@
 [
     {
+        "displayName": "AssessAble",
+        "repoName": "assess-able",
+        "caption": "LA Hacks 2025 - Healthcare Track",
+        "displayDescription": "AssessAble is a mobile application that helps older adults prevent falls by detecting hidden home hazards through photo or video scans. It provides personalized, ADA-aligned safety recommendations and visual mockups, empowering seniors to age safely and independently in the homes they love.",
+        "image": "assessable.png",
+        "links": [
+            {
+                "text": "Devpost",
+                "url": "https://devpost.com/software/assessable"
+            }
+        ],
+        "technologies": ["Gemini API", "Expo", "React Native", "FastAPI"]
+    },
+    {
         "displayName": "pill.ai",
         "repoName": "pillpro",
         "caption": "LA Hacks 2024 - Healthcare Track Winner",
@@ -16,7 +30,7 @@
     {
         "displayName": "JARVIS Health",
         "repoName": "jarvis-health",
-        "caption": "TreeHacks 2025",
+        "caption": "TreeHacks 2025 - Healthcare Track",
         "displayDescription": "JARVIS Health is a tablet application designed to monitor soldiers' health during training. It aggregates heart rate and exertion data from wearable devices via the Terra API, providing commanders with a real-time overview of multiple soldiers' physical states. The platform uses OpenAI's GPT-4 models to analyze data and offer actionable insights, supporting data-driven decisions for safer and more effective training.",
         "image": "jarvis.png",
         "links": [
