@@ -25,22 +25,49 @@
     </div>
 </template>
 
-<script>
+<script lang="ts">
+import { defineComponent } from 'vue';
 import p5 from 'p5';
 import aboutInfo from '@/assets/data/about.json';
 
-export default {
+interface AboutInfo {
+    firstName: string;
+    lastName: string;
+    headline: string;
+    linkedin: string;
+    github: string;
+    email: string;
+}
+
+interface Particle {
+    x: number;
+    y: number;
+    diameter: number;
+    speedX: number;
+    speedY: number;
+    angle: number;
+    rotSpeed: number;
+    opacity: number;
+    move(): void;
+    display(s: p5): void;
+    checkEdges(s: p5): void;
+    lineTo?(other: Particle, s: p5): void;
+}
+
+export default defineComponent({
+    name: 'HomePage',
     beforeCreate() {
-        p5.disableFriendlyErrors = true; // disable console output from p5.js
+        (p5 as any).disableFriendlyErrors = true; // disable console output from p5.js
     },
     data() {
         return {
-            aboutInfo,
-            particles: [],
+            aboutInfo: aboutInfo as AboutInfo,
+            particles: [] as Particle[],
             maxParticles: 50,
             mouseLinkDist: 100,
             hasClicked: false, // whether scroll down button has been clicked
             bounce: false, // whether scroll down button has bounced yet
+            bounceTimer: 0 as number,
         };
     },
     methods: {
@@ -50,20 +77,20 @@ export default {
                 clearTimeout(this.bounceTimer);
                 this.bounce = false;
             }
-            document.getElementById('about').scrollIntoView({ behavior: 'smooth' });
+            document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
         },
         // p5 sketch
-        initSketch(container) {
-            new p5((s) => {
-                let isMobile;
-                let lastW, lastH;
+        initSketch(container: HTMLElement) {
+            new p5((s: p5) => {
+                const isMobile = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
                 const resizeThreshold = 100;
+
+                // Initial canvas width and height
+                let lastW = window.innerWidth;
+                let lastH = window.innerHeight;
 
                 // Create canvas and seed particles
                 s.setup = () => {
-                    isMobile = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-                    lastW = window.innerWidth;
-                    lastH = window.innerHeight;
                     s.createCanvas(lastW * 1.2, lastH * 1.2).parent(container);
 
                     for (let i = 0; i < this.maxParticles; i++) {
@@ -89,7 +116,12 @@ export default {
                         if (!isMobile) {
                             const d = s.dist(p.x, p.y, s.mouseX, s.mouseY);
                             if (d < this.mouseLinkDist) {
-                                s.stroke(100, 200, 255, s.map(d, 0, this.mouseLinkDist, 200, 0));
+                                s.stroke(
+                                    100,
+                                    200,
+                                    255,
+                                    s.map(d, 0, this.mouseLinkDist, 200, 0, false)
+                                );
                                 s.line(p.x, p.y, s.mouseX, s.mouseY);
                             }
                         }
@@ -108,7 +140,7 @@ export default {
                     ) {
                         lastW = w;
                         lastH = h;
-                        s.resizeCanvas(w * 1.2, h * 1.2);
+                        s.resizeCanvas(w * 1.2, h * 1.2, false);
                     }
                 };
                 s.mouseClicked = () => {
@@ -119,7 +151,7 @@ export default {
             });
         },
         // Factory for a single particle
-        newParticle(s, x = s.random(s.width), y = s.random(s.height)) {
+        newParticle(s: p5, x = s.random(s.width), y = s.random(s.height)): Particle {
             return {
                 x,
                 y,
@@ -138,10 +170,10 @@ export default {
                         (s.sin(this.angle + s.PI / 2) * this.diameter) / 2 + this.diameter / 2;
                     s.noStroke();
                     s.fill(255, 255, 255, this.opacity);
-                    s.ellipse(this.x, this.y, d);
+                    s.ellipse(this.x, this.y, d, d);
                     this.angle += this.rotSpeed;
                 },
-                lineTo(other, s) {
+                lineTo(other: Particle, s: p5) {
                     const distToMouse = s.dist(this.x, this.y, s.mouseX, s.mouseY);
                     const distToParticle = s.dist(this.x, this.y, other.x, other.y);
                     if (distToMouse < 127) {
@@ -153,7 +185,7 @@ export default {
                         s.line(this.x, this.y, other.x, other.y);
                     }
                 },
-                checkEdges(s) {
+                checkEdges(s: p5) {
                     if (this.x > s.width + this.diameter) this.x = -this.diameter;
                     if (this.x < -this.diameter) this.x = s.width + this.diameter;
                     if (this.y > s.height + this.diameter) this.y = -this.diameter;
@@ -163,39 +195,44 @@ export default {
         },
     },
     mounted() {
-        // Initialize background canvas
-        this.initSketch(this.$refs.home);
+        const homeEl = this.$refs.home as HTMLElement;
+        const cursorEl = this.$refs.cursor as HTMLElement;
 
-        const container = this.$refs.home;
-        const cursor = this.$refs.cursor;
+        // Initialize background canvas
+        if (homeEl) this.initSketch(homeEl);
 
         // Only display custom cursor within home page
-        const onMove = (e) => {
-            cursor.style.top = e.clientY + 'px';
-            cursor.style.left = e.clientX + 'px';
+        const onMove = (e: MouseEvent) => {
+            cursorEl.style.top = e.clientY + 'px';
+            cursorEl.style.left = e.clientX + 'px';
         };
+
+        // Inside the canvas, display custom cursor
         const onEnter = () => {
-            container.style.cursor = 'none';
-            cursor.style.display = 'block';
+            homeEl.style.cursor = 'none';
+            cursorEl.style.display = 'block';
             window.addEventListener('mousemove', onMove);
         };
+
+        // Outside the canvas, display normal cursor
         const onLeave = () => {
-            container.style.cursor = '';
-            cursor.style.display = 'none';
+            homeEl.style.cursor = '';
+            cursorEl.style.display = 'none';
             window.removeEventListener('mousemove', onMove);
         };
-        container.addEventListener('mouseenter', onEnter);
-        container.addEventListener('mouseleave', onLeave);
+
+        homeEl.addEventListener('mouseenter', onEnter);
+        homeEl.addEventListener('mouseleave', onLeave);
 
         // After 7s, if user still hasn't clicked, start bouncing the scroll down button
-        this.bounceTimer = setTimeout(() => {
+        this.bounceTimer = window.setTimeout(() => {
             if (!this.hasClicked) this.bounce = true;
         }, 7000);
     },
     beforeUnmount() {
         clearTimeout(this.bounceTimer);
     },
-};
+});
 </script>
 
 <style scoped>
