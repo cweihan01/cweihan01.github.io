@@ -12,20 +12,27 @@
     </SectionWrapper>
 </template>
 
-<script>
+<script lang="ts">
+import { defineComponent } from 'vue';
 import SectionWrapper from './SectionWrapper.vue';
 import aboutInfo from '@/assets/data/about.json';
 
-export default {
+interface AboutInfo {
+  portrait: string;
+  description: string;
+}
+
+export default defineComponent({
+    name: "AboutSection",
     data() {
         return {
-            aboutInfo,
+            aboutInfo: aboutInfo as AboutInfo,
         };
     },
     components: {
         SectionWrapper,
     },
-};
+});
 </script>
 
 <style scoped>
