@@ -18,8 +18,8 @@ import SectionWrapper from './SectionWrapper.vue';
 import aboutInfo from '@/assets/data/about.json';
 
 interface AboutInfo {
-  portrait: string;
-  description: string;
+    portrait: string;
+    description: string;
 }
 
 export default defineComponent({
