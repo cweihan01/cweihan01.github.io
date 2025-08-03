@@ -1,23 +1,58 @@
-<script>
+<script lang="ts">
+import { defineComponent, type DirectiveBinding } from 'vue';
 import SectionWrapper from './SectionWrapper.vue';
-import skills from '@/assets/data/skills.json';
+import skillsData from '@/assets/data/skills.json';
 
-export default {
-    data() {
+interface Skill {
+    name: string;
+    icon: string;
+    category: string;
+    proficiency: number;
+}
+
+interface Category {
+    name: string;
+    label: string;
+    icon: string;
+}
+
+interface SkillsData {
+    categories: Category[];
+    skills: Skill[];
+}
+
+
+export default defineComponent({
+    name: "SkillsSection",
+    components: {
+        SectionWrapper,
+    },
+    data(): {
+        selectedCategory: string;
+        intersected: Record<string, boolean>;
+        categories: Category[];
+        skills: Skill[];
+    } {
+        const { categories, skills } = skillsData as SkillsData;
         return {
             selectedCategory: 'all',
             intersected: {},
-            ...skills,
+            categories,
+            skills,
         };
     },
     directives: {
         /** Create v-intersect directive that updates intersected with new entry. */
         intersect: {
-            mounted(el, { instance, value }) {
+            mounted(
+                el: HTMLElement,
+                binding: DirectiveBinding<string>,
+            ) {
+                const categoryName = binding.value;
                 const obs = new IntersectionObserver(
                     ([entry]) => {
                         if (entry.isIntersecting) {
-                            instance.intersected[value] = true;
+                            (binding.instance as any).intersected[categoryName] = true;
                             obs.unobserve(el);
                         }
                     },
@@ -35,8 +70,8 @@ export default {
     },
     computed: {
         /** Filter skills by selectedCategory and sort in descending proficiency level. */
-        filteredSkills() {
-            let skillsList =
+        filteredSkills(): Skill[] {
+            const skillsList =
                 this.selectedCategory === 'all'
                     ? this.skills
                     : this.skills.filter((skill) => skill.category === this.selectedCategory);
@@ -44,10 +79,7 @@ export default {
             return skillsList.sort((a, b) => b.proficiency - a.proficiency);
         },
     },
-    components: {
-        SectionWrapper,
-    },
-};
+});
 </script>
 
 <template>
