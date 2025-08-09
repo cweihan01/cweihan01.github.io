@@ -24,78 +24,82 @@
     </nav>
 </template>
 
-<script setup>
-import { ref, onMounted, onUnmounted } from 'vue';
+<script lang="ts">
+import { defineComponent } from 'vue';
 
-const menuOpen = ref(false);
-const isMobile = ref(window.innerWidth < 768);
-const shouldHideNavbar = ref(false);
-const forceHideNavbar = ref(false);
-let lastScrollY = window.scrollY;
+type SectionId = 'home' | 'about' | 'experience' | 'projects' | 'skills' | string;
 
-// Toggles the navbar menu on mobile
-const toggleMenu = () => {
-    menuOpen.value = !menuOpen.value;
-};
+export default defineComponent({
+    name: "Navbar",
+    data(): {
+        menuOpen: boolean,
+        isMobile: boolean,
+        shouldHideNavbar: boolean;
+        forceHideNavbar: boolean;
+        lastScrollY: number;
+    } {
+        return {
+            menuOpen: false,
+            isMobile: window.innerWidth < 768,
+            shouldHideNavbar: false,
+            forceHideNavbar: false,
+            lastScrollY: window.scrollY,
+        };
+    },
+    methods: {
+        // Toggles the navbar menu on mobile
+        toggleMenu() {
+            this.menuOpen = !this.menuOpen;
+        },
 
-// Scrolls to a particular section and forces the navbar to hide
-const scrollTo = (sectionId) => {
-    const section = document.getElementById(sectionId);
-    if (section) {
-        section.scrollIntoView({ behavior: 'smooth' });
-    }
+        // Scrolls to a particular section and forces the navbar to hide
+        scrollTo(sectionId: SectionId): void {
+            document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
 
-    // Force hide the navbar if user click on any link besides 'home'
-    if (sectionId !== 'home') {
-        forceHideNavbar.value = true;
-        shouldHideNavbar.value = true;
-    }
+            // Force hide the navbar if user click on any link besides 'home'
+            if (sectionId !== 'home') {
+                this.forceHideNavbar = true;
+                this.shouldHideNavbar = true;
+            }
 
-    // If on mobile, close the menu after clicking
-    if (isMobile.value) {
-        menuOpen.value = false;
-    }
+            // If on mobile, close the menu after clicking
+            if (this.isMobile) this.menuOpen = false;
 
-    // After a short delay, release the forced hide so scroll events resume normal behavior
-    setTimeout(() => {
-        forceHideNavbar.value = false;
-        lastScrollY = window.scrollY;
-    }, 1000);
-};
+            // After a short delay, release the forced hide so scroll events resume normal behavior
+            window.setTimeout(() => {
+                this.forceHideNavbar = false;
+                this.lastScrollY = window.scrollY;
+            }, 1000);
+        },
 
-// Handles hiding/showing navbar when user scrolls down a certain distance
-const handleScroll = () => {
-    // If user just clicked a navbar link, disregard scroll direction; always hide navbar
-    if (forceHideNavbar.value) return;
+        // Handles hiding/showing navbar when user scrolls down a certain distance
+        handleScroll() {
+            // If user just clicked a navbar link, disregard scroll direction; always hide navbar
+            if (this.forceHideNavbar) return;
 
-    const currentScrollY = window.scrollY;
-    // Hide navbar if scrolling down beyond a threshold, otherwise show it
-    if (currentScrollY > lastScrollY && currentScrollY > 100) {
-        shouldHideNavbar.value = true;
-    } else {
-        shouldHideNavbar.value = false;
-    }
-    lastScrollY = currentScrollY;
+            // Hide navbar if scrolling down beyond a threshold, otherwise show it
+            const current = window.scrollY;
+            this.shouldHideNavbar = current > this.lastScrollY && current > 100;
+            this.lastScrollY = current;
+            
+            // If on mobile, close the menu after scrolling
+            if (this.isMobile) this.menuOpen = false;
+        },
 
-    // If on mobile, close the menu after scrolling
-    if (isMobile.value) {
-        menuOpen.value = false;
-    }
-};
-
-// Checks whether to display mobile navbar when window is resized
-const handleResize = () => {
-    isMobile.value = window.innerWidth < 768;
-};
-
-// Add event listeners for scroll and resize
-onMounted(() => {
-    window.addEventListener('scroll', handleScroll);
-    window.addEventListener('resize', handleResize);
-});
-onUnmounted(() => {
-    window.removeEventListener('scroll', handleScroll);
-    window.removeEventListener('resize', handleResize);
+        // Checks whether to display mobile navbar when window is resized
+        handleResize(): void {
+            this.isMobile = window.innerWidth < 768;
+        },
+    },
+    // Add event listeners for scroll and resize
+    mounted() {
+        window.addEventListener('scroll', this.handleScroll);
+        window.addEventListener('resize', this.handleResize);
+    },
+    beforeUnmount() {
+        window.removeEventListener('scroll', this.handleScroll);
+        window.removeEventListener('resize', this.handleResize);
+    },
 });
 </script>
 
