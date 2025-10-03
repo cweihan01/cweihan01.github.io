@@ -16,10 +16,10 @@
         "company": "Code for the Community",
         "location": "San Francisco, CA",
         "startDate": "May 2025",
-        "endDate": "Present",
+        "endDate": "Sep 2025",
         "description": "",
         "points": [
-            "Building a mobile app for the Middle East Children's Alliance (MECA) to share stories, events, and fundraising efforts with their global community.",
+            "Built a mobile app for the Middle East Children's Alliance (MECA) to share stories, events, and fundraising efforts with their global community.",
             "Developing backend services with AWS Lambda, API Gateway, and SNS, integrating REST and GraphQL APIs to deliver dynamic content and push notifications."
         ]
     },
