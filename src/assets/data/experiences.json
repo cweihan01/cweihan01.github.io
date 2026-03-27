@@ -4,11 +4,11 @@
         "company": "Commure",
         "location": "Mountain View, CA",
         "startDate": "Jun 2025",
-        "endDate": "Present",
+        "endDate": "Dec 2025",
         "description": "",
         "points": [
-            "Improving an Electronic Health Record (EHR) platform using React, TypeScript, and TanStack Query to streamline clinical workflows and ease provider workloads.",
-            "Designing and testing FastAPI endpoints to support clinical features and efficient data access."
+            "Developed frontend features for an Electronic Health Record (EHR) platform using React, TypeScript, and TanStack Query to streamline clinical workflows and ease provider workloads.",
+            "Designed and tested API endpoints with FastAPI and SQLAlchemy to support clinical features and efficient data access."
         ]
     },
     {
@@ -20,7 +20,7 @@
         "description": "",
         "points": [
             "Built a mobile app for the Middle East Children's Alliance (MECA) to share stories, events, and fundraising efforts with their global community.",
-            "Developing backend services with AWS Lambda, API Gateway, and SNS, integrating REST and GraphQL APIs to deliver dynamic content and push notifications."
+            "Developed backend services with AWS Lambda, API Gateway, and SNS, integrating REST and GraphQL APIs to deliver dynamic content and push notifications."
         ]
     },
     {
