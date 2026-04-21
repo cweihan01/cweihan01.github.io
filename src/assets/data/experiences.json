@@ -50,6 +50,18 @@
         ]
     },
     {
+        "title": "Software Developer",
+        "company": "Creative Labs",
+        "location": "UCLA",
+        "startDate": "Apr 2025",
+        "endDate": "Present",
+        "description": "",
+        "points": [
+            "Spring 2026: Built a mobile journaling app using React Native (Expo) and Skia, featuring a local-first architecture using Drizzle ORM + SQLite for offline persistence.",
+            "Fall 2026: Developed a full-stack housing web application using Next.js, FastAPI, and PostgreSQL, implementing end-to-end features for listings and user interactions."
+    ]
+    },
+    {
         "title": "Peer Learning Facilitator",
         "company": "Academic Advancement Program",
         "location": "UCLA",
