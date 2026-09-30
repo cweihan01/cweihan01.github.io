@@ -1,14 +1,41 @@
 [
     {
         "title": "Software Engineer Intern",
+        "company": "Salesforce",
+        "location": "San Francisco, CA",
+        "startDate": "Jun 2026",
+        "endDate": "Sep 2026",
+        "description": "",
+        "points": [
+            "Architected a dual-mode Go/Python CLI for HashiCorp Vault secrets onboarding and diagnostics, supporting interactive workflows and automated CI validation across internal engineering teams.",
+            "Analyzed thousands of support tickets to identify Vault setup friction and refined contextual prompts to substantially reduce ticket volume.",
+            "Benchmarked validator rules across thousands of files and repositories to resolve edge cases and prevent false positives."
+        ]
+    },
+    {
+        "title": "Software Engineer Intern",
+        "company": "Develop For Good",
+        "location": "Remote",
+        "startDate": "May 2026",
+        "endDate": "Aug 2026",
+        "description": "",
+        "points": [
+            "Spearheaded development of a React Native (Expo) and Firebase mobile app for Fresh Lifelines For Youth, helping justice-impacted youth access legal resources, mentorship, and goal tracking.",
+            "Delivered full-stack gamification and user dashboard features with secure, indexed Firestore schemas.",
+            "Established engineering standards for a 6-person team through code reviews, CI/CD setup, and documentation."
+        ]
+    },
+    {
+        "title": "Software Engineer Intern",
         "company": "Commure",
         "location": "Mountain View, CA",
         "startDate": "Jun 2025",
         "endDate": "Dec 2025",
         "description": "",
         "points": [
-            "Developed frontend features for an Electronic Health Record (EHR) platform using React, TypeScript, and TanStack Query to streamline clinical workflows and ease provider workloads.",
-            "Designed and tested API endpoints with FastAPI and SQLAlchemy to support clinical features and efficient data access."
+            "Automated fax-to-task workflows, built audit logs, and introduced role-based user groups in an Electronic Health Record (EHR) platform, driving a 15x increase in task volume in the first month post-release.",
+            "Built reusable React/TypeScript components, hooks, and contexts with TanStack Query and Zod to improve EHR interfaces with stronger UI responsiveness and type-safe data validation.",
+            "Developed FastAPI CRUD APIs with 100% coverage and optimized SQLAlchemy queries to cut data access latency."
         ]
     },
     {
@@ -19,8 +46,20 @@
         "endDate": "Sep 2025",
         "description": "",
         "points": [
-            "Built a mobile app for the Middle East Children's Alliance (MECA) to share stories, events, and fundraising efforts with their global community.",
-            "Developed backend services with AWS Lambda, API Gateway, and SNS, integrating REST and GraphQL APIs to deliver dynamic content and push notifications."
+            "Built a React Native mobile app for the Middle East Children's Alliance (MECA) to share stories, events, and fundraising efforts with their global community.",
+            "Architected serverless APIs and push notification workflows with AWS Lambda, API Gateway, SNS, and S3, integrating Shopify and WordPress via GraphQL and REST."
+        ]
+    },
+    {
+        "title": "Software Developer",
+        "company": "Creative Labs",
+        "location": "UCLA",
+        "startDate": "Apr 2025",
+        "endDate": "Apr 2026",
+        "description": "",
+        "points": [
+            "Spring 2025: Built a mobile journaling app using React Native (Expo) and Skia, featuring a local-first architecture with Drizzle ORM and SQLite for offline persistence.",
+            "Winter 2026: Developed a full-stack housing web application using Next.js, FastAPI, and PostgreSQL, implementing end-to-end features for listings and user interactions."
         ]
     },
     {
@@ -31,10 +70,9 @@
         "endDate": "Jun 2025",
         "description": "",
         "points": [
-            "Architected and deployed a PostgreSQL database on AWS, centralizing 100k+ records.",
-            "Developed a real-time query platform with dynamic visualizations using Django REST framework, React, and Plotly.",
-            "Optimized performance with Redis caching, achieving over 100x faster query speeds.",
-            "Provisioned an AWS EC2 instance and configured Nginx as a reverse proxy with DNS and SSL for secure web access."
+            "Architected and deployed a PostgreSQL database on AWS RDS, centralizing 100k+ lab records from dozens of spreadsheets.",
+            "Built a real-time Django/React query platform with dynamic visualizations, integrating Redis caching to accelerate frequent computations by 100x.",
+            "Provisioned an AWS EC2 instance with Linux disk partitions and systemd services for app deployment, and configured Nginx as a reverse proxy with DNS and SSL for secure HTTPS access."
         ]
     },
     {
@@ -50,18 +88,6 @@
         ]
     },
     {
-        "title": "Software Developer",
-        "company": "Creative Labs",
-        "location": "UCLA",
-        "startDate": "Apr 2025",
-        "endDate": "Present",
-        "description": "",
-        "points": [
-            "Spring 2026: Built a mobile journaling app using React Native (Expo) and Skia, featuring a local-first architecture using Drizzle ORM + SQLite for offline persistence.",
-            "Fall 2026: Developed a full-stack housing web application using Next.js, FastAPI, and PostgreSQL, implementing end-to-end features for listings and user interactions."
-    ]
-    },
-    {
         "title": "Peer Learning Facilitator",
         "company": "Academic Advancement Program",
         "location": "UCLA",
@@ -69,7 +95,8 @@
         "endDate": "Jun 2025",
         "description": "",
         "points": [
-            "Lead biweekly peer learning sessions for PIC 10B & PIC 10C (Intermediate & Advanced Programming with C++), facilitating discussions and helping peers develop programming skills in a collaborative environment."
+            "Facilitated biweekly peer learning sessions for PIC 10B & PIC 10C (Intermediate & Advanced Programming with C++), helping underserved students build programming skills collaboratively.",
+            "Curated curriculum from live coursework and past exams into worksheets, live coding demos, and project exercises covering C++ concepts like STL, OOP, and memory management."
         ]
     },
     {
@@ -80,7 +107,7 @@
         "endDate": "Jun 2025",
         "description": "",
         "points": [
-            "Collaborate with external clients to derive actionable insights from data and strengthen data processing pipelines."
+            "Collaborated with external clients to derive actionable insights from data and strengthen data processing pipelines."
         ]
     },
     {
