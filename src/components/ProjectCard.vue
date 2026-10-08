@@ -90,10 +90,27 @@
     </div>
 </template>
 
-<script>
-export default {
-    props: ['project', 'index'],
-    data() {
+<script lang="ts">
+import { defineComponent, type DirectiveBinding, type PropType } from 'vue';
+import type { Project } from './Projects.vue';
+
+export default defineComponent({
+    name: 'ProjectCard',
+    props: {
+        project: {
+            type: Object as PropType<Project>,
+            required: true,
+        },
+        index: {
+            type: Number,
+            required: true,
+        },
+    },
+    data(): {
+        visible: boolean;
+        intersected: Record<string, boolean>;
+        isMobile: boolean;
+    } {
         return {
             visible: false,
             intersected: {},
@@ -101,11 +118,12 @@ export default {
         };
     },
     computed: {
-        /** Turn languages (in bytes) to percentages (only keep top 4). */
-        langPercentages() {
+        /** Turn languages (in bytes) to percentages (only keep top 3). */
+        langPercentages(): Record<string, string> {
             const raw = this.project.languages || {};
             const entries = Object.entries(raw);
             const total = entries.reduce((sum, [, b]) => sum + b, 0);
+            if (total === 0) return {};
             return Object.fromEntries(
                 entries
                     .map(([lang, bytes]) => [lang, ((bytes / total) * 100).toFixed(1)])
@@ -114,7 +132,8 @@ export default {
         },
     },
     methods: {
-        formatDate(dateString) {
+        formatDate(dateString?: string): string {
+            if (!dateString) return 'N/A';
             const date = new Date(dateString);
             return new Intl.DateTimeFormat('en-US', {
                 day: 'numeric',
@@ -129,11 +148,12 @@ export default {
     },
     directives: {
         intersect: {
-            mounted(el, { instance, value }) {
+            mounted(el: HTMLElement, binding: DirectiveBinding<string>) {
+                const lang = binding.value;
                 const obs = new IntersectionObserver(
                     ([entry]) => {
                         if (entry.isIntersecting) {
-                            instance.intersected[value] = true;
+                            (binding.instance as any).intersected[lang] = true;
                             obs.unobserve(el);
                         }
                     },
@@ -155,12 +175,12 @@ export default {
             },
             { threshold: 0.1 }
         );
-        observer.observe(this.$el);
+        observer.observe(this.$el as Element);
     },
     beforeUnmount() {
         window.removeEventListener('resize', this.onResize);
     },
-};
+});
 </script>
 
 <style scoped>
