@@ -70,7 +70,7 @@
                                 <tr v-for="(commit, index) in commits" :key="commit.sha">
                                     <td>{{ index + 1 }}</td>
                                     <td>
-                                        {{ formatDate(commit.commit.author.date) }}
+                                        {{ formatDate(commit.commit.author?.date) }}
                                     </td>
                                     <td>{{ commit.commit.message.split('\n')[0] }}</td>
                                     <td>
@@ -86,39 +86,73 @@
     </footer>
 </template>
 
-<script>
+<script lang="ts">
+import { defineComponent } from 'vue';
 import aboutInfo from '@/assets/data/about.json';
 import SectionWrapper from './SectionWrapper.vue';
 import { fetchLatestCommits } from '@/api/github';
 
-export default {
-    data() {
+interface AboutInfo {
+    firstName: string;
+    emailText: string;
+    email: string;
+    linkedin: string;
+    github: string;
+    footnote: string;
+    repoPath: string;
+    sourceCode: string;
+}
+
+interface GithubCommit {
+    sha: string;
+    html_url: string;
+    commit: {
+        message: string;
+        author: {
+            name: string;
+            date: string;
+        } | null;
+    };
+}
+
+export default defineComponent({
+    name: 'FooterSection',
+    components: {
+        SectionWrapper,
+    },
+    data(): {
+        aboutInfo: AboutInfo;
+        showCommits: boolean;
+        commits: GithubCommit[];
+    } {
         return {
-            aboutInfo,
+            aboutInfo: aboutInfo as AboutInfo,
             showCommits: false,
             commits: [],
         };
     },
-    components: {
-        SectionWrapper,
-    },
     computed: {
-        lastUpdatedDatetime() {
+        lastUpdatedDatetime(): string | undefined {
             // Use the date from the most recent commit
             if (this.commits.length) {
-                return this.formatDate(this.commits[0].commit.author.date);
+                return this.formatDate(this.commits[0].commit.author?.date);
             }
+            return undefined;
         },
     },
     async created() {
         // Fetch the 10 most recent commits once component created
-        this.commits = await fetchLatestCommits(this.aboutInfo.repoPath, 10);
+        this.commits = (await fetchLatestCommits(
+            this.aboutInfo.repoPath,
+            10,
+        )) as GithubCommit[];
     },
     methods: {
         toggleCommits() {
             this.showCommits = !this.showCommits;
         },
-        formatDate(dateString) {
+        formatDate(dateString?: string): string {
+            if (!dateString) return 'N/A';
             const date = new Date(dateString);
             return new Intl.DateTimeFormat('en-US', {
                 day: 'numeric',
@@ -129,7 +163,7 @@ export default {
             }).format(date);
         },
     },
-};
+});
 </script>
 
 <style scoped>
