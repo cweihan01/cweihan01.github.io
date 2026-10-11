@@ -1,5 +1,8 @@
-<script>
-export default {
+<script lang="ts">
+import { defineComponent } from 'vue';
+
+export default defineComponent({
+    name: 'SectionWrapper',
     props: {
         title: {
             type: String,
@@ -18,13 +21,15 @@ export default {
             required: true,
         },
     },
-    data() {
+    data(): {
+        windowWidth: number;
+    } {
         return {
             windowWidth: window.innerWidth, // Track the window size
         };
     },
     computed: {
-        contentWidth() {
+        contentWidth(): string {
             // Return 100% on small screens or based on isContentSize
             if (this.windowWidth <= 768) return '100%';
             else if (this.windowWidth <= 1024) return this.isContentSize ? '90%' : '100%';
@@ -43,7 +48,7 @@ export default {
             this.windowWidth = window.innerWidth;
         },
     },
-};
+});
 </script>
 
 <template>
