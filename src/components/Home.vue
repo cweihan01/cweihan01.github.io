@@ -4,16 +4,16 @@
         <div class="scroll-catcher"></div>
         <div class="intro-overlay">
             <div class="intro-section">
-                <h1 class="name">{{ aboutInfo.firstName + ' ' + aboutInfo.lastName }}</h1>
-                <p class="headline">{{ aboutInfo.headline }}</p>
+                <h1 class="name">{{ about.firstName + ' ' + about.lastName }}</h1>
+                <p class="headline">{{ about.headline }}</p>
                 <div class="icons-container">
-                    <a :href="aboutInfo.linkedin" target="_blank" aria-label="LinkedIn">
+                    <a :href="about.linkedin" target="_blank" aria-label="LinkedIn">
                         <fa-icon icon="fab fa-linkedin" size="3x" class="social-icons" />
                     </a>
-                    <a :href="aboutInfo.github" target="_blank" aria-label="GitHub">
+                    <a :href="about.github" target="_blank" aria-label="GitHub">
                         <fa-icon icon="fab fa-github" size="3x" class="social-icons" />
                     </a>
-                    <a :href="aboutInfo.email" target="_blank" aria-label="Email">
+                    <a :href="about.email" target="_blank" aria-label="Email">
                         <fa-icon icon="fas fa-envelope" size="3x" class="social-icons" />
                     </a>
                 </div>
@@ -28,8 +28,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import p5 from 'p5';
-import aboutInfo from '@/assets/data/about.json';
-import type { AboutInfo } from '@/types/about';
+import { about } from '@/data';
 
 interface Particle {
     x: number;
@@ -53,7 +52,7 @@ export default defineComponent({
     },
     data() {
         return {
-            aboutInfo: aboutInfo as AboutInfo,
+            about,
             particles: [] as Particle[],
             maxParticles: 50,
             mouseLinkDist: 100,

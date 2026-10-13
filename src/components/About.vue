@@ -1,11 +1,11 @@
 <template>
     <SectionWrapper sectionId="about" bgColor="#f3f4f6">
         <div class="about-section">
-            <img :src="aboutInfo.portrait" alt="Portrait" class="portrait" />
+            <img :src="about.portrait" alt="Portrait" class="portrait" />
             <div class="about-content">
                 <h2 class="about-title">About Me</h2>
                 <p class="about-paragraph">
-                    {{ aboutInfo.description }}
+                    {{ about.description }}
                 </p>
             </div>
         </div>
@@ -15,14 +15,13 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import SectionWrapper from './SectionWrapper.vue';
-import aboutInfo from '@/assets/data/about.json';
-import type { AboutInfo } from '@/types/about';
+import { about } from '@/data';
 
 export default defineComponent({
     name: "AboutSection",
     data() {
         return {
-            aboutInfo: aboutInfo as AboutInfo,
+            about,
         };
     },
     components: {

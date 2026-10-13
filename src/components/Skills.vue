@@ -1,8 +1,8 @@
 <script lang="ts">
 import { defineComponent, type DirectiveBinding } from 'vue';
 import SectionWrapper from './SectionWrapper.vue';
-import skillsData from '@/assets/data/skills.json';
-import type { Category, Skill, SkillsData } from '@/types/skill';
+import { skills as skillsData } from '@/data';
+import type { Category, Skill } from '@/types/skill';
 
 export default defineComponent({
     name: "SkillsSection",
@@ -15,7 +15,7 @@ export default defineComponent({
         categories: Category[];
         skills: Skill[];
     } {
-        const { categories, skills } = skillsData as SkillsData;
+        const { categories, skills } = skillsData;
         return {
             selectedCategory: 'all',
             intersected: {},

@@ -1,14 +1,13 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import SectionWrapper from './SectionWrapper.vue';
-import experiences from '@/assets/data/experiences.json';
-import type { Experience } from '@/types/experience';
+import { experiences } from '@/data';
 
 export default defineComponent({
     name: "ExperienceSection",
     data() {
         return {
-            experiences: experiences as Experience[],
+            experiences,
         };
     },
     components: {

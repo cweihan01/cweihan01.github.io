@@ -5,7 +5,7 @@
             <div class="footer-header">
                 <h2 class="footer-title">Contact Me!</h2>
                 <p class="footer-subtitle">
-                    {{ aboutInfo.footnote }}
+                    {{ about.footnote }}
                 </p>
             </div>
 
@@ -14,13 +14,13 @@
                 <!-- Social links -->
                 <p class="footer-text text-md">
                     Contact me at
-                    <a :href="aboutInfo.email" target="_blank">{{ aboutInfo.emailText }}</a>
+                    <a :href="about.email" target="_blank">{{ about.emailText }}</a>
                 </p>
                 <div class="icons-container">
-                    <a :href="aboutInfo.linkedin" target="_blank" aria-label="LinkedIn">
+                    <a :href="about.linkedin" target="_blank" aria-label="LinkedIn">
                         <fa-icon icon="fab fa-linkedin" size="2x" class="social-icons" />
                     </a>
-                    <a :href="aboutInfo.github" target="_blank" aria-label="GitHub">
+                    <a :href="about.github" target="_blank" aria-label="GitHub">
                         <fa-icon icon="fab fa-github" size="2x" class="social-icons" />
                     </a>
                 </div>
@@ -29,7 +29,7 @@
                 <p class="footer-text text-sm">
                     Made with
                     <fa-icon icon="fas fa-mug-hot" style="color: #967259" />
-                    by {{ aboutInfo.firstName }} using
+                    by {{ about.firstName }} using
                     <a href="https://vuejs.org/" target="_blank" style="color: #42b883">
                         <fa-icon icon="fab fa-vuejs" />
                     </a>
@@ -37,7 +37,7 @@
 
                 <!-- Source code link -->
                 <p class="footer-text text-sm">
-                    <a :href="aboutInfo.sourceCode" target="_blank"> Source Code </a>
+                    <a :href="about.sourceCode" target="_blank"> Source Code </a>
                 </p>
 
                 <!-- Last updated datetime and latest updates -->
@@ -88,9 +88,9 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import aboutInfo from '@/assets/data/about.json';
 import SectionWrapper from './SectionWrapper.vue';
 import { fetchLatestCommits } from '@/api/github';
+import { about } from '@/data';
 import type { AboutInfo } from '@/types/about';
 
 interface GithubCommit {
@@ -111,12 +111,12 @@ export default defineComponent({
         SectionWrapper,
     },
     data(): {
-        aboutInfo: AboutInfo;
+        about: AboutInfo;
         showCommits: boolean;
         commits: GithubCommit[];
     } {
         return {
-            aboutInfo: aboutInfo as AboutInfo,
+            about,
             showCommits: false,
             commits: [],
         };
@@ -133,7 +133,7 @@ export default defineComponent({
     async created() {
         // Fetch the 10 most recent commits once component created
         this.commits = (await fetchLatestCommits(
-            this.aboutInfo.repoPath,
+            this.about.repoPath,
             10,
         )) as GithubCommit[];
     },

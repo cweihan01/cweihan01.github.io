@@ -2,9 +2,9 @@
 import { defineComponent } from 'vue';
 import ProjectCard from './ProjectCard.vue';
 import SectionWrapper from './SectionWrapper.vue';
-import projectsData from '@/assets/data/projects.json';
 import githubCache from '@/assets/data/projects.generated.json';
 import { fetchReposWithLanguages } from '@/api/github.js';
+import { projects as staticProjects } from '@/data';
 import type { ProjectData } from '@/types/project';
 
 interface GithubRepoData {
@@ -38,7 +38,6 @@ export default defineComponent({
     },
     async created() {
         try {
-            const staticProjects = projectsData as ProjectData[];
             const fullNames = staticProjects.map((p) => `cweihan01/${p.repoName}`);
 
             // Use cached data in dev; fetch from API in prod
