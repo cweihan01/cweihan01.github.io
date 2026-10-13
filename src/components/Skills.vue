@@ -2,25 +2,7 @@
 import { defineComponent, type DirectiveBinding } from 'vue';
 import SectionWrapper from './SectionWrapper.vue';
 import skillsData from '@/assets/data/skills.json';
-
-interface Skill {
-    name: string;
-    icon: string;
-    category: string;
-    proficiency: number;
-}
-
-interface Category {
-    name: string;
-    label: string;
-    icon: string;
-}
-
-interface SkillsData {
-    categories: Category[];
-    skills: Skill[];
-}
-
+import type { Category, Skill, SkillsData } from '@/types/skill';
 
 export default defineComponent({
     name: "SkillsSection",

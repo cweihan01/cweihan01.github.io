@@ -2,16 +2,7 @@
 import { defineComponent } from 'vue';
 import SectionWrapper from './SectionWrapper.vue';
 import experiences from '@/assets/data/experiences.json';
-
-interface Experience {
-    title: string,
-    company: string,
-    location: string,
-    startDate: string,
-    endDate: string,
-    description: string,
-    points: string[],
-}
+import type { Experience } from '@/types/experience';
 
 export default defineComponent({
     name: "ExperienceSection",

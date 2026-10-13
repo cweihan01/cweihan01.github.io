@@ -91,17 +91,7 @@ import { defineComponent } from 'vue';
 import aboutInfo from '@/assets/data/about.json';
 import SectionWrapper from './SectionWrapper.vue';
 import { fetchLatestCommits } from '@/api/github';
-
-interface AboutInfo {
-    firstName: string;
-    emailText: string;
-    email: string;
-    linkedin: string;
-    github: string;
-    footnote: string;
-    repoPath: string;
-    sourceCode: string;
-}
+import type { AboutInfo } from '@/types/about';
 
 interface GithubCommit {
     sha: string;

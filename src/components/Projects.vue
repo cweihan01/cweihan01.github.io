@@ -5,21 +5,7 @@ import SectionWrapper from './SectionWrapper.vue';
 import projectsData from '@/assets/data/projects.json';
 import githubCache from '@/assets/data/projects.generated.json';
 import { fetchReposWithLanguages } from '@/api/github.js';
-
-interface ProjectLink {
-    text: string;
-    url: string;
-}
-
-interface ProjectData {
-    displayName: string;
-    repoName: string;
-    caption: string;
-    displayDescription: string;
-    image: string;
-    links: ProjectLink[];
-    technologies: string[];
-}
+import type { ProjectData } from '@/types/project';
 
 interface GithubRepoData {
     description?: string | null;

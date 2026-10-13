@@ -16,11 +16,7 @@
 import { defineComponent } from 'vue';
 import SectionWrapper from './SectionWrapper.vue';
 import aboutInfo from '@/assets/data/about.json';
-
-interface AboutInfo {
-    portrait: string;
-    description: string;
-}
+import type { AboutInfo } from '@/types/about';
 
 export default defineComponent({
     name: "AboutSection",

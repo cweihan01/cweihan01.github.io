@@ -29,15 +29,7 @@
 import { defineComponent } from 'vue';
 import p5 from 'p5';
 import aboutInfo from '@/assets/data/about.json';
-
-interface AboutInfo {
-    firstName: string;
-    lastName: string;
-    headline: string;
-    linkedin: string;
-    github: string;
-    email: string;
-}
+import type { AboutInfo } from '@/types/about';
 
 interface Particle {
     x: number;
