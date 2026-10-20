@@ -92,7 +92,7 @@
 
 <script lang="ts">
 import { defineComponent, type DirectiveBinding, type PropType } from 'vue';
-import type { Project } from './Projects.vue';
+import type { Project } from '@/types/project';
 
 export default defineComponent({
     name: 'ProjectCard',

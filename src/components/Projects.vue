@@ -2,26 +2,9 @@
 import { defineComponent } from 'vue';
 import ProjectCard from './ProjectCard.vue';
 import SectionWrapper from './SectionWrapper.vue';
-import githubCache from '@/assets/data/projects.generated.json';
-import { fetchReposWithLanguages } from '@/api/github.js';
-import { projects as staticProjects } from '@/data';
-import type { ProjectData } from '@/types/project';
-
-interface GithubRepoData {
-    description?: string | null;
-    stargazers_count?: number;
-    pushed_at?: string;
-    html_url?: string;
-    languages?: Record<string, number>;
-}
-
-export interface Project extends ProjectData {
-    repoDescription: string;
-    stargazersCount?: number;
-    pushedAt?: string;
-    repoLink?: string;
-    languages?: Record<string, number>;
-}
+import { fetchReposWithLanguages } from '@/api/github';
+import { projects as staticProjects, projectsGenerated } from '@/data';
+import type { Project } from '@/types/project';
 
 export default defineComponent({
     name: 'ProjectsSection',
@@ -41,22 +24,20 @@ export default defineComponent({
             const fullNames = staticProjects.map((p) => `cweihan01/${p.repoName}`);
 
             // Use cached data in dev; fetch from API in prod
-            const githubRepos = (
-                import.meta.env.DEV
-                    ? githubCache
-                    : await fetchReposWithLanguages(fullNames)
-            ) as (GithubRepoData | null)[];
+            const githubRepos = import.meta.env.DEV
+                ? projectsGenerated
+                : await fetchReposWithLanguages(fullNames);
 
             // Combine static project data with fetched data from API
             this.projects = staticProjects.map((project, i) => {
-                const gh = githubRepos[i] || {};
+                const gh = githubRepos[i];
                 return {
-                    ...project, // keep original custom project data
-                    repoDescription: gh.description || 'No description available.',
-                    stargazersCount: gh.stargazers_count,
-                    pushedAt: gh.pushed_at,
-                    repoLink: gh.html_url,
-                    languages: gh.languages,
+                    ...project,
+                    repoDescription: gh?.description || 'No description available.',
+                    stargazersCount: gh?.stargazers_count,
+                    pushedAt: gh?.pushed_at,
+                    repoLink: gh?.html_url,
+                    languages: gh?.languages,
                 };
             });
         } catch (error) {

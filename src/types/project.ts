@@ -1,5 +1,7 @@
 /** Shape of each entry in `src/assets/data/projects.json`. */
 
+import type { GithubLanguages } from './github';
+
 export interface ProjectLink {
     text: string;
     url: string;
@@ -13,4 +15,13 @@ export interface ProjectData {
     image: string;
     links: ProjectLink[];
     technologies: string[];
+}
+
+/** Static project data merged with GitHub repo fields for display. */
+export interface Project extends ProjectData {
+    repoDescription: string;
+    stargazersCount?: number;
+    pushedAt?: string;
+    repoLink?: string;
+    languages?: GithubLanguages;
 }

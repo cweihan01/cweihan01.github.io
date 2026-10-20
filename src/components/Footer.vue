@@ -92,18 +92,7 @@ import SectionWrapper from './SectionWrapper.vue';
 import { fetchLatestCommits } from '@/api/github';
 import { about } from '@/data';
 import type { AboutInfo } from '@/types/about';
-
-interface GithubCommit {
-    sha: string;
-    html_url: string;
-    commit: {
-        message: string;
-        author: {
-            name: string;
-            date: string;
-        } | null;
-    };
-}
+import type { GithubCommit } from '@/types/github';
 
 export default defineComponent({
     name: 'FooterSection',
@@ -132,10 +121,7 @@ export default defineComponent({
     },
     async created() {
         // Fetch the 10 most recent commits once component created
-        this.commits = (await fetchLatestCommits(
-            this.about.repoPath,
-            10,
-        )) as GithubCommit[];
+        this.commits = await fetchLatestCommits(this.about.repoPath, 10);
     },
     methods: {
         toggleCommits() {
