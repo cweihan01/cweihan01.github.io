@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "setup": "node src/scripts/github.js",
+    "setup": "node --experimental-strip-types src/scripts/github.ts",
     "dev": "vite",
     "dev:setup": "npm run setup && npm run dev",
     "build": "vite build",
@@ -20,6 +20,7 @@
     "vue": "^3.5.13"
   },
   "devDependencies": {
+    "@octokit/openapi-types": "^29.0.1",
     "@types/node": "^24.0.14",
     "@types/p5": "^1.7.6",
     "@vitejs/plugin-vue": "^5.2.1",
