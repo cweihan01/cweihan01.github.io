@@ -4,6 +4,7 @@ import ProjectCard from './ProjectCard.vue';
 import SectionWrapper from './SectionWrapper.vue';
 import { fetchReposWithLanguages } from '@/api/github';
 import { projects as staticProjects, projectsGenerated } from '@/data';
+import type { GithubRepoWithLanguages } from '@/types/github';
 import type { Project } from '@/types/project';
 
 export default defineComponent({
@@ -21,19 +22,24 @@ export default defineComponent({
     },
     async created() {
         try {
-            const fullNames = staticProjects.map((p) => `cweihan01/${p.repoName}`);
+            const githubProjects = staticProjects.filter((p) => p.repoName);
+            const fullNames = githubProjects.map((p) => `cweihan01/${p.repoName}`);
 
-            // Use cached data in dev; fetch from API in prod
+            // Use cached data in dev; fetch from API in prod.
+            // Cache order matches projects that have a repoName, not the GitHub `name` field.
             const githubRepos = import.meta.env.DEV
                 ? projectsGenerated
                 : await fetchReposWithLanguages(fullNames);
 
+            const githubByRepoName = new Map<string, GithubRepoWithLanguages | null>(
+                githubProjects.map((project, i) => [project.repoName as string, githubRepos[i] ?? null]),
+            );
+
             // Combine static project data with fetched data from API
-            this.projects = staticProjects.map((project, i) => {
-                const gh = githubRepos[i];
+            this.projects = staticProjects.map((project) => {
+                const gh = project.repoName ? githubByRepoName.get(project.repoName) : undefined;
                 return {
                     ...project,
-                    repoDescription: gh?.description || 'No description available.',
                     stargazersCount: gh?.stargazers_count,
                     pushedAt: gh?.pushed_at,
                     repoLink: gh?.html_url,

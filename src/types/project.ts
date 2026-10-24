@@ -9,9 +9,10 @@ export interface ProjectLink {
 
 export interface ProjectData {
     displayName: string;
-    repoName: string;
+    repoName?: string;
     caption: string;
     displayDescription: string;
+    date?: string;
     image: string;
     links: ProjectLink[];
     technologies: string[];
@@ -19,7 +20,6 @@ export interface ProjectData {
 
 /** Static project data merged with GitHub repo fields for display. */
 export interface Project extends ProjectData {
-    repoDescription: string;
     stargazersCount?: number;
     pushedAt?: string;
     repoLink?: string;

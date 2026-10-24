@@ -3,7 +3,12 @@
         <div :class="['card-inner', { reverse: index % 2 === 1 }]">
             <!-- Image side: contains image, technologies, languages -->
             <div class="image-container">
-                <img :src="project.image" alt="Project Image" class="project-image" />
+                <img
+                    v-if="project.image"
+                    :src="project.image"
+                    alt="Project Image"
+                    class="project-image"
+                />
 
                 <!-- Tech badges (desktop) -->
                 <div v-if="!isMobile" class="techs-container">
@@ -42,13 +47,16 @@
                 <p class="caption">{{ project.caption }}</p>
 
                 <p class="description">
-                    {{ project.displayDescription || project.repoDescription }}
+                    {{ project.displayDescription }}
                 </p>
 
-                <p class="date">Last updated: {{ formatDate(project.pushedAt) }}</p>
+                <p v-if="project.date" class="date">{{ project.date }}</p>
+                <p v-else-if="project.pushedAt" class="date">
+                    Last updated: {{ formatDate(project.pushedAt) }}
+                </p>
 
                 <div class="links-container">
-                    <a :href="project.repoLink" target="_blank" class="btn repo-btn">
+                    <a v-if="project.repoLink" :href="project.repoLink" target="_blank" class="btn repo-btn">
                         <fa-icon icon="fab fa-github" size="lg" class="icon" /> Repo
                     </a>
                     <div v-for="(link, idx) in project.links" :key="idx">

@@ -11,7 +11,9 @@ async function main(): Promise<void> {
     const rawProjects = JSON.parse(rawText) as ProjectData[];
 
     console.log('Fetching projects and languages from GitHub API');
-    const fullRepoNames = rawProjects.map((p) => `cweihan01/${p.repoName}`);
+    const fullRepoNames = rawProjects
+        .filter((p) => p.repoName)
+        .map((p) => `cweihan01/${p.repoName}`);
     const out = await fetchReposWithLanguages(fullRepoNames);
 
     await fs.writeFile(OUT, JSON.stringify(out, null, 2), 'utf8');
