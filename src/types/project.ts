@@ -8,10 +8,10 @@ export interface ProjectLink {
 }
 
 export interface ProjectData {
-    displayName: string;
+    title: string;
     repoName?: string;
-    caption: string;
-    displayDescription: string;
+    caption?: string;
+    description: string;
     startDate?: string;
     endDate?: string;
     image: string;

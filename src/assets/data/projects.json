@@ -1,10 +1,9 @@
 [
     {
-        "displayName": "FLY Mobile App",
-        "caption": "",
+        "title": "FLY Mobile App",
         "startDate": "May 2026",
         "endDate": "Present",
-        "displayDescription": "Fresh Lifelines for Youth (FLY) works with over 2,000 justice-impacted youth in the Bay Area. We built a a mobile app so youth can access legal resources through gamified learning, connect with mentors, and track goals. Currently in beta testing, stay tuned!",
+        "description": "Fresh Lifelines for Youth (FLY) works with over 2,000 justice-impacted youth in the Bay Area. We built a a mobile app so youth can access legal resources through gamified learning, connect with mentors, and track goals. Currently in beta testing, stay tuned!",
         "image": "fly.png",
         "links": [
             {
@@ -15,11 +14,10 @@
         "technologies": ["React Native", "Expo", "Firestore"]
     },
     {
-        "displayName": "MECA Mobile App",
-        "caption": "",
+        "title": "MECA Mobile App",
         "startDate": "May 2025",
         "endDate": "Sep 2025",
-        "displayDescription": "The Middle East Children's Alliance (MECA) supports Palestinian families through aid and education, and works to raise awareness and promote meaningful solidarity with over 60,000 followers on social media. We developed a mobile app for followers to read stories, see events, shop merchandise, and donate to fundraisers. I built the backend systems for push notifications and serverless APIs on AWS Lambda, API Gateway, SNS, and S3. Check it out on the App Store and Google Play!",
+        "description": "The Middle East Children's Alliance (MECA) supports Palestinian families through aid and education, and works to raise awareness and promote meaningful solidarity with over 60,000 followers on social media. We developed a mobile app for followers to read stories, see events, shop merchandise, and donate to fundraisers. I built the backend systems for push notifications and serverless APIs on AWS Lambda, API Gateway, SNS, and S3. Check it out on the App Store and Google Play!",
         "image": "meca.png",
         "links": [
             {
@@ -34,11 +32,11 @@
         "technologies": ["React Native", "AWS Lambda", "API Gateway", "SNS"]
     },
     {
-        "displayName": "SingaporeConnect Ticketing Platform",
+        "title": "SingaporeConnect Ticketing Platform",
         "caption": "Bay Area Festival 2025",
         "startDate": "Jul 2025",
         "endDate": "Sep 2025",
-        "displayDescription": "SingaporeConnect is a Bay Area nonprofit for Singaporeans and friends of Singapore. I built the payment service for their 2025 festival, which had over 3,000 attendees: Stripe webhooks on Express.js, and React screens for buying and assigning tickets.",
+        "description": "SingaporeConnect is a Bay Area nonprofit for Singaporeans and friends of Singapore. I built the payment service for their 2025 festival, which had over 3,000 attendees: Stripe webhooks on Express.js, and React screens for buying and assigning tickets.",
         "image": "festival.webp",
         "links": [
             {
@@ -49,10 +47,10 @@
         "technologies": ["Express.js", "Stripe", "Firebase", "React"]
     },
     {
-        "displayName": "AssessAble",
+        "title": "AssessAble",
         "repoName": "assess-able",
         "caption": "LA Hacks 2025 - Healthcare Track",
-        "displayDescription": "AssessAble is a mobile application that helps older adults prevent falls by detecting hidden home hazards through photo or video scans. It provides personalized, ADA-aligned safety recommendations and visual mockups, empowering seniors to age safely and independently in the homes they love.",
+        "description": "AssessAble is a mobile application that helps older adults prevent falls by detecting hidden home hazards through photo or video scans. It provides personalized, ADA-aligned safety recommendations and visual mockups, empowering seniors to age safely and independently in the homes they love.",
         "image": "assessable.png",
         "links": [
             {
@@ -63,10 +61,10 @@
         "technologies": ["Gemini API", "Expo", "React Native", "FastAPI"]
     },
     {
-        "displayName": "pill.ai",
+        "title": "pill.ai",
         "repoName": "pillpro",
         "caption": "LA Hacks 2024 - Healthcare Track Winner",
-        "displayDescription": "pill.ai is an AI-powered platform that prevents prescription errors by verifying medication images and doctor-patient audio using Google's Gemini API. It empowers patients to take charge of their medication with a user-friendly dashboard, enhancing medication safety.",
+        "description": "pill.ai is an AI-powered platform that prevents prescription errors by verifying medication images and doctor-patient audio using Google's Gemini API. It empowers patients to take charge of their medication with a user-friendly dashboard, enhancing medication safety.",
         "image": "pillai.png",
         "links": [
             {
@@ -77,10 +75,10 @@
         "technologies": ["Gemini API", "React", "Material UI"]
     },
     {
-        "displayName": "JARVIS Health",
+        "title": "JARVIS Health",
         "repoName": "jarvis-health",
         "caption": "TreeHacks 2025 - Healthcare Track",
-        "displayDescription": "JARVIS Health is a tablet application designed to monitor soldiers' health during training. It aggregates heart rate and exertion data from wearable devices via the Terra API, providing commanders with a real-time overview of multiple soldiers' physical states. The platform uses OpenAI's GPT-4 models to analyze data and offer actionable insights, supporting data-driven decisions for safer and more effective training.",
+        "description": "JARVIS Health is a tablet application designed to monitor soldiers' health during training. It aggregates heart rate and exertion data from wearable devices via the Terra API, providing commanders with a real-time overview of multiple soldiers' physical states. The platform uses OpenAI's GPT-4 models to analyze data and offer actionable insights, supporting data-driven decisions for safer and more effective training.",
         "image": "jarvis.png",
         "links": [
             {
@@ -91,19 +89,19 @@
         "technologies": ["FlutterFlow", "Firebase", "Terra API", "OpenAI API"]
     },
     {
-        "displayName": "Personal Website",
+        "title": "Personal Website",
         "repoName": "cweihan01.github.io",
         "caption": "My Portfolio & Learning Space",
-        "displayDescription": "I created this site to document my projects and experiences while exploring Vue and front-end development. Having primarily worked with React, this project provides an opportunity to discover new ways of building with Vue. The site is very much a work in progress, and I see it as a space to experiment freely, learn through building, and continuously improve. Thanks for stopping by!",
+        "description": "I created this site to document my projects and experiences while exploring Vue and front-end development. Having primarily worked with React, this project provides an opportunity to discover new ways of building with Vue. The site is very much a work in progress, and I see it as a space to experiment freely, learn through building, and continuously improve. Thanks for stopping by!",
         "image": "website.png",
         "links": [],
         "technologies": ["Vue.js", "GitHub API"]
     },
     {
-        "displayName": "remembrall",
+        "title": "remembrall",
         "repoName": "remembrall",
         "caption": "UCLA CS35L Final Project",
-        "displayDescription": "Built with the PERN stack, this full stack web application helps users manage tasks effectively. It features an interactive drag-and-drop task list, a friends system, and dynamic search filters, making task management intuitive, collaborative, and efficient.",
+        "description": "Built with the PERN stack, this full stack web application helps users manage tasks effectively. It features an interactive drag-and-drop task list, a friends system, and dynamic search filters, making task management intuitive, collaborative, and efficient.",
         "image": "remembrall.png",
         "links": [],
         "technologies": ["PostgreSQL", "Express.js", "React", "Node.js"]

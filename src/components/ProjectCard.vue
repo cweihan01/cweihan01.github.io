@@ -42,13 +42,10 @@
 
             <!-- Text side: title, caption, description, last updated, links -->
             <div class="text-container">
-                <h3 class="title">{{ project.displayName }}</h3>
+                <h3 class="title">{{ project.title }}</h3>
+                <p v-if="project.caption" class="caption">{{ project.caption }}</p>
 
-                <p class="caption">{{ project.caption }}</p>
-
-                <p class="description">
-                    {{ project.displayDescription }}
-                </p>
+                <p class="description">{{ project.description }}</p>
 
                 <p v-if="project.startDate && project.endDate" class="date">
                     {{ project.startDate }} — {{ project.endDate }}
