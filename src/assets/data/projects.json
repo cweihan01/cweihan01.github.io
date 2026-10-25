@@ -1,5 +1,54 @@
 [
     {
+        "displayName": "FLY Mobile App",
+        "caption": "",
+        "startDate": "May 2026",
+        "endDate": "Present",
+        "displayDescription": "Fresh Lifelines for Youth (FLY) works with over 2,000 justice-impacted youth in the Bay Area. We built a a mobile app so youth can access legal resources through gamified learning, connect with mentors, and track goals. Currently in beta testing, stay tuned!",
+        "image": "fly.png",
+        "links": [
+            {
+                "text": "FLY Website",
+                "url": "https://flyprogram.org/"
+            }
+        ],
+        "technologies": ["React Native", "Expo", "Firestore"]
+    },
+    {
+        "displayName": "MECA Mobile App",
+        "caption": "",
+        "startDate": "May 2025",
+        "endDate": "Sep 2025",
+        "displayDescription": "The Middle East Children's Alliance (MECA) supports Palestinian families through aid and education, and works to raise awareness and promote meaningful solidarity with over 60,000 followers on social media. We developed a mobile app for followers to read stories, see events, shop merchandise, and donate to fundraisers. I built the backend systems for push notifications and serverless APIs on AWS Lambda, API Gateway, SNS, and S3. Check it out on the App Store and Google Play!",
+        "image": "meca.png",
+        "links": [
+            {
+                "text": "App Store",
+                "url": "https://apps.apple.com/us/app/meca-for-peace/id6751219765"
+            },
+            {
+                "text": "Google Play",
+                "url": "https://play.google.com/store/apps/details?id=com.cftc.meca"
+            }
+        ],
+        "technologies": ["React Native", "AWS Lambda", "API Gateway", "SNS"]
+    },
+    {
+        "displayName": "SingaporeConnect Ticketing Platform",
+        "caption": "Bay Area Festival 2025",
+        "startDate": "Jul 2025",
+        "endDate": "Sep 2025",
+        "displayDescription": "SingaporeConnect is a Bay Area nonprofit for Singaporeans and friends of Singapore. I built the payment service for their 2025 festival, which had over 3,000 attendees: Stripe webhooks on Express.js, and React screens for buying and assigning tickets.",
+        "image": "festival.webp",
+        "links": [
+            {
+                "text": "Event Website",
+                "url": "https://www.singaporeconnect.org/events/sgfest-2025"
+            }
+        ],
+        "technologies": ["Express.js", "Stripe", "Firebase", "React"]
+    },
+    {
         "displayName": "AssessAble",
         "repoName": "assess-able",
         "caption": "LA Hacks 2025 - Healthcare Track",

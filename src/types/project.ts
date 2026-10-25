@@ -12,7 +12,8 @@ export interface ProjectData {
     repoName?: string;
     caption: string;
     displayDescription: string;
-    date?: string;
+    startDate?: string;
+    endDate?: string;
     image: string;
     links: ProjectLink[];
     technologies: string[];

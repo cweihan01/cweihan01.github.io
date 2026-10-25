@@ -50,7 +50,9 @@
                     {{ project.displayDescription }}
                 </p>
 
-                <p v-if="project.date" class="date">{{ project.date }}</p>
+                <p v-if="project.startDate && project.endDate" class="date">
+                    {{ project.startDate }} — {{ project.endDate }}
+                </p>
                 <p v-else-if="project.pushedAt" class="date">
                     Last updated: {{ formatDate(project.pushedAt) }}
                 </p>
