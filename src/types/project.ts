@@ -5,6 +5,7 @@ import type { GithubLanguages } from './github';
 export interface ProjectLink {
     text: string;
     url: string;
+    icon?: string;  // optional font awesome icon name, eg. "fab fa-devpost"
 }
 
 export interface ProjectData {

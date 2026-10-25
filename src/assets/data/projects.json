@@ -22,11 +22,13 @@
         "links": [
             {
                 "text": "App Store",
-                "url": "https://apps.apple.com/us/app/meca-for-peace/id6751219765"
+                "url": "https://apps.apple.com/us/app/meca-for-peace/id6751219765",
+                "icon": "fab fa-app-store"
             },
             {
                 "text": "Google Play",
-                "url": "https://play.google.com/store/apps/details?id=com.cftc.meca"
+                "url": "https://play.google.com/store/apps/details?id=com.cftc.meca",
+                "icon": "fab fa-google-play"
             }
         ],
         "technologies": ["React Native", "AWS Lambda", "API Gateway", "SNS"]
@@ -55,7 +57,8 @@
         "links": [
             {
                 "text": "Devpost",
-                "url": "https://devpost.com/software/assessable"
+                "url": "https://devpost.com/software/assessable",
+                "icon": "fab fa-devpost"
             }
         ],
         "technologies": ["Gemini API", "Expo", "React Native", "FastAPI"]
@@ -69,7 +72,8 @@
         "links": [
             {
                 "text": "Devpost",
-                "url": "https://devpost.com/software/pill-ai"
+                "url": "https://devpost.com/software/pill-ai",
+                "icon": "fab fa-devpost"
             }
         ],
         "technologies": ["Gemini API", "React", "Material UI"]
@@ -83,7 +87,8 @@
         "links": [
             {
                 "text": "Devpost",
-                "url": "https://devpost.com/software/jarvis-health"
+                "url": "https://devpost.com/software/jarvis-health",
+                "icon": "fab fa-devpost"
             }
         ],
         "technologies": ["FlutterFlow", "Firebase", "Terra API", "OpenAI API"]

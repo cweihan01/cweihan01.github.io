@@ -60,6 +60,11 @@
                     </a>
                     <div v-for="(link, idx) in project.links" :key="idx">
                         <a :href="link.url" target="_blank" class="btn">
+                            <fa-icon
+                                :icon="link.icon || 'fas fa-arrow-up-right-from-square'"
+                                size="lg"
+                                class="icon"
+                            />
                             {{ link.text }}
                         </a>
                     </div>
