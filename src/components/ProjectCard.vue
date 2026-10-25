@@ -226,6 +226,7 @@ export default defineComponent({
 
 .image-container {
     flex: 1 1 40%;
+    align-self: center;
     position: relative;
     display: flex;
     flex-direction: column;
